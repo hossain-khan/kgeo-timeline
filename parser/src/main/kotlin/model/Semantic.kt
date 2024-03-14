@@ -1,3 +1,5 @@
+package dev.hossain.timeline.model
+
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -140,7 +142,7 @@ data class Duration(
 )
 
 @JsonClass(generateAdapter = true)
-data class Activity(
+data class ActivityDuplicate(
     /** Type of activity */
     @Json(name = "activityType")
     val activityType: String,
@@ -149,7 +151,6 @@ data class Activity(
     @Json(name = "probability")
     val probability: Double
 )
-
 
 @JsonClass(generateAdapter = true)
 data class SourceInfo(
