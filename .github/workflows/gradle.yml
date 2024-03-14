@@ -27,7 +27,7 @@ jobs:
     # Configure Gradle for optimal use in GiHub Actions, including caching of downloaded dependencies.
     # See: https://github.com/gradle/actions/blob/main/setup-gradle/README.md
     - name: Setup Gradle
-      uses: gradle/gradle-build-action@v3 # v3.1.0
+      uses: gradle/gradle-build-action@v3
       with:
          gradle-version: '8.4'
 
@@ -62,4 +62,4 @@ jobs:
     # Generates and submits a dependency graph, enabling Dependabot Alerts for all project dependencies.
     # See: https://github.com/gradle/actions/blob/main/dependency-submission/README.md
     - name: Generate and submit dependency graph
-      uses: gradle/actions/dependency-submission@v3 # v3.1.0
+      uses: gradle/actions/dependency-submission@v3
