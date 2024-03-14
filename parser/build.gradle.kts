@@ -1,25 +1,25 @@
 plugins {
-    kotlin("jvm")
-    id("org.jlleitschuh.gradle.ktlint") version "10.2.0"
+  kotlin("jvm")
+  id("org.jlleitschuh.gradle.ktlint") version "12.1.0"
 }
 
 group = "dev.hossain.timeline"
 version = "1.0-SNAPSHOT"
 
 repositories {
-    mavenCentral()
+  mavenCentral()
 }
 
 dependencies {
-    implementation("com.squareup.moshi:moshi:1.15.1")
-    implementation("com.squareup.moshi:moshi-kotlin:1.12.0")
-    implementation("com.squareup.okio:okio:3.7.0")
-    testImplementation("org.jetbrains.kotlin:kotlin-test")
+  implementation("com.squareup.moshi:moshi:1.15.1")
+  implementation("com.squareup.moshi:moshi-kotlin:1.12.0")
+  implementation("com.squareup.okio:okio:3.7.0")
+  testImplementation("org.jetbrains.kotlin:kotlin-test")
 }
 
 tasks.test {
-    useJUnitPlatform()
+  useJUnitPlatform()
 }
 kotlin {
-    jvmToolchain(21)
+  jvmToolchain(21)
 }
