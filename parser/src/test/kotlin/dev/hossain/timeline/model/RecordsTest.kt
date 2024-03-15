@@ -9,9 +9,10 @@ import kotlin.test.Test
  * Test cases for [Settings].
  */
 class RecordsTest {
-  private val moshi: Moshi = Moshi.Builder()
-    .add(ZonedDateTimeAdapter())
-    .build()
+  private val moshi: Moshi =
+    Moshi.Builder()
+      .add(ZonedDateTimeAdapter())
+      .build()
 
   @Test
   fun `given records json should parse all records`() {

@@ -123,61 +123,51 @@ data class Location(
    * Example: 414216106
    */
   @Json(name = "latitudeE7") val latitudeE7: Int,
-
   /**
    * Longitude coordinate of the location. Degrees multiplied by 10^7 and rounded to the nearest integer.
    * Example: 21684775
    */
   @Json(name = "longitudeE7") val longitudeE7: Int,
-
   /**
    * Google Maps Place ID of the location.
    * Example: "ChIJk_s92NyipBIRUMnDG8Kq2Js"
    */
   @Json(name = "placeId") val placeId: String?,
-
   /**
    * Address of the location.
    * Example: "C/ de Mallorca, 401\n08013 Barcelona\nEspanya"
    */
   @Json(name = "address") val address: String?,
-
   /**
    * Name of the location.
    * Example: "La Sagrada Familia"
    */
   @Json(name = "name") val name: String?,
-
   /**
    * Place type based on semantic information specific to the user.
    * Example: "TYPE_HOME"
    */
-  @Json(name = "semanticType") val semanticType: String?,
-
+  @Json(name = "semanticType") val semanticType: SemanticType?,
   /**
    * Approximate accuracy radius of the location measurement, in meters. A lower value means better precision.
    * Example: 19
    */
   @Json(name = "accuracyMetres") val accuracyMetres: Int?,
-
   /**
    * Confidence in the location.
    * Example: 100.0
    */
   @Json(name = "locationConfidence") val locationConfidence: Double?,
-
   /**
    * Whether this is the current location.
    * Example: true
    */
   @Json(name = "isCurrentLocation") val isCurrentLocation: Boolean?,
-
   /**
    * Calibrated probability of the location.
    * Example: 100.0
    */
   @Json(name = "calibratedProbability") val calibratedProbability: Double?,
-
   /**
    * Information on the source that provided the location.
    * Example:
@@ -187,6 +177,46 @@ data class Location(
    */
   @Json(name = "sourceInfo") val sourceInfo: DeviceSourceInfo?,
 )
+
+/**
+ * Place type based on semantic information specific to the user.
+ *
+ * Example:
+ * ```json
+ * {
+ *   "semanticType": "TYPE_HOME"
+ * }
+ * ```
+ */
+enum class SemanticType(val title: String, val description: String, val extraColor: String) {
+  @Json(name = "TYPE_HOME")
+  TYPE_HOME(
+    "Type Home",
+    "The place has been designated as 'Home' by the user.",
+    "#03a9f4",
+  ),
+
+  @Json(name = "TYPE_WORK")
+  TYPE_WORK(
+    "Type Work",
+    "The place has been designated as 'Work' by the user.",
+    "#03a9f4",
+  ),
+
+  @Json(name = "TYPE_SEARCHED_ADDRESS")
+  TYPE_SEARCHED_ADDRESS(
+    "Type Searched Address",
+    "The user has searched for this place in the past.",
+    "#03a9f4",
+  ),
+
+  @Json(name = "TYPE_ALIASED_LOCATION")
+  TYPE_ALIASED_LOCATION(
+    "Type Aliased Location",
+    "The place has been given a private label by the user.",
+    "#03a9f4",
+  ),
+}
 
 /**
  * Represents source information of a location.
@@ -204,7 +234,7 @@ data class DeviceSourceInfo(
    * Integer identifier associated with the device that obtained the location.
    * Example: 1234567890
    */
-  @Json(name = "deviceTag") val deviceTag: Int
+  @Json(name = "deviceTag") val deviceTag: Int,
 )
 
 @JsonClass(generateAdapter = true)
@@ -340,12 +370,11 @@ data class Duration(
    * Example: "2022-02-02T10:41:08.315Z"
    */
   @Json(name = "startTimestamp") val startTimestamp: ZonedDateTime,
-
   /**
    * End timestamp of the duration.
    * Example: "2022-02-02T10:45:09.962Z"
    */
-  @Json(name = "endTimestamp") val endTimestamp: ZonedDateTime
+  @Json(name = "endTimestamp") val endTimestamp: ZonedDateTime,
 )
 
 @JsonClass(generateAdapter = true)
@@ -435,15 +464,12 @@ data class ParkingEvent(
   /** The location of the parking event */
   @Json(name = "location")
   val location: Location,
-
   @Json(name = "method")
   val method: Method,
-
   @Json(name = "locationSource")
   val locationSource: LocationSource,
-
   @Json(name = "timestamp")
-  val timestamp: ZonedDateTime
+  val timestamp: ZonedDateTime,
 )
 
 enum class Method {
@@ -457,7 +483,7 @@ enum class Method {
   EXITING_VEHICLE_SIGNAL,
 
   @Json(name = "UNDEFINED")
-  UNDEFINED
+  UNDEFINED,
 }
 
 enum class LocationSource {
@@ -468,7 +494,7 @@ enum class LocationSource {
   NOT_FROM_RAW_LOCATION,
 
   @Json(name = "UNKNOWN")
-  UNKNOWN
+  UNKNOWN,
 }
 
 @JsonClass(generateAdapter = true)

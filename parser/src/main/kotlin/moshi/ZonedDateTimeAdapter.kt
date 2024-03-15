@@ -7,13 +7,13 @@ import java.time.format.DateTimeFormatter
  * Moshi adapter for [ZonedDateTime].
  */
 class ZonedDateTimeAdapter {
-    @ToJson
-    fun toJson(zonedDateTime: ZonedDateTime): String {
-        return DateTimeFormatter.ISO_ZONED_DATE_TIME.format(zonedDateTime)
-    }
+  @ToJson
+  fun toJson(zonedDateTime: ZonedDateTime): String {
+    return DateTimeFormatter.ISO_ZONED_DATE_TIME.format(zonedDateTime)
+  }
 
-    @FromJson
-    fun fromJson(zonedDateTimeString: String): ZonedDateTime {
-        return ZonedDateTime.parse(zonedDateTimeString, DateTimeFormatter.ISO_ZONED_DATE_TIME)
-    }
+  @FromJson
+  fun fromJson(zonedDateTimeString: String): ZonedDateTime {
+    return ZonedDateTime.parse(zonedDateTimeString, DateTimeFormatter.ISO_ZONED_DATE_TIME)
+  }
 }

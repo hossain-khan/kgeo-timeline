@@ -212,5 +212,5 @@ enum class ActivityType(val title: String, val extraColor: String) {
   IN_GONDOLA_LIFT("In a gondola lift", "#01579b"),
   CATCHING_POKEMON("Catching Pokémon", "#db4437"),
   IN_TAXI("In a taxi", "#01579b"),
-  PARAGLIDING("Paragliding", "#4db6ac")
+  PARAGLIDING("Paragliding", "#4db6ac"),
 }
