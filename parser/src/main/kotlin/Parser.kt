@@ -2,6 +2,8 @@ package dev.hossain.timeline
 
 import ZonedDateTimeAdapter
 import com.squareup.moshi.Moshi
+import com.squareup.moshi.adapters.EnumJsonAdapter
+import dev.hossain.timeline.model.ActivityType
 import dev.hossain.timeline.model.Records
 import dev.hossain.timeline.model.SemanticTimeline
 import dev.hossain.timeline.model.Settings
@@ -14,6 +16,10 @@ class Parser constructor() {
   private val moshi: Moshi =
     Moshi.Builder()
       .add(ZonedDateTimeAdapter())
+      .add(
+        ActivityType::class.java,
+        EnumJsonAdapter.create(ActivityType::class.java).withUnknownFallback(ActivityType.UNKNOWN),
+      )
       .build()
 
   /**
