@@ -86,7 +86,7 @@ data class ActivitySegment(
    * Example: "CONFIRMED"
    */
   @Json(name = "editConfirmationStatus")
-  val editConfirmationStatus: String?,
+  val editConfirmationStatus: EditConfirmationStatus?,
   /**
    * Edit-Action Metadata for this activity segment
    * Example: EditActionMetadata(lastEditedTimestamp = "2022-03-06T14:13:11.092Z")
@@ -100,6 +100,23 @@ data class ActivitySegment(
   @Json(name = "lastEditedTimestamp")
   val lastEditedTimestamp: String?,
 )
+
+
+/**
+ * Represents the edit confirmation status.
+ */
+enum class EditConfirmationStatus {
+
+  /**
+   * Indicates the user has not manually edited the entry.
+   */
+  NOT_CONFIRMED,
+
+  /**
+   * Indicates the user has manually edited the entry.
+   */
+  CONFIRMED
+}
 
 /**
  * Represents a location with various properties.
@@ -407,48 +424,41 @@ data class TransitPath(
    */
   @Json(name = "transitStops")
   val transitStops: List<Location>,
-
   /**
    * Name of the transit line.
    * Example: "H8"
    */
   @Json(name = "name")
   val name: String,
-
   /**
    * Color of the transit line in hexadecimal in the form *RRGGBB*.
    * Example: "009EE0"
    */
   @Json(name = "hexRgbColor")
   val hexRgbColor: String,
-
   /**
    * Google Maps [Place ID](https://developers.google.com/maps/documentation/places/web-service/place-id) of the transit line.
    * Example: "ChIJQVEUoLuipBIRJO37wI4yyBs"
    */
   @Json(name = "linePlaceId")
   val linePlaceId: String,
-
   /**
    * Time information (departure and arrival times, both real and scheduled) for each transit stop used.
    */
   @Json(name = "stopTimesInfo")
   val stopTimesInfo: List<StopTimeInfo>,
-
   /**
    * Source of the location data of the transit path. Either `BACKFILLED` or `INFERRED`.
    * Example: "INFERRED"
    */
   @Json(name = "source")
   val source: String,
-
   /**
    * Confidence level of the transit path data. Ranges from 0 to 1.
    * Example: 0.9155850640140931
    */
   @Json(name = "confidence")
   val confidence: Double,
-
   /**
    * Distance traveled with the transit path, in meters.
    * Example: 2341.0
@@ -511,14 +521,72 @@ enum class LocationSource {
   UNKNOWN,
 }
 
+/**
+ * Represents the edit action metadata.
+ */
 @JsonClass(generateAdapter = true)
 data class EditActionMetadata(
-  /** The action of the edit */
-  @Json(name = "action")
-  val action: String,
-  /** The timestamp of the edit action */
-  @Json(name = "actionTimestamp")
-  val actionTimestamp: String,
+
+  /**
+   * Represents the activity segment.
+   */
+  @Json(name = "activitySegment")
+  val activitySegment: ActivitySegment,
+
+  /**
+   * Represents the place visit segment.
+   */
+  @Json(name = "placeVisitSegment")
+  val placeVisitSegment: PlaceVisitSegment,
+
+  /**
+   * Represents the edit history.
+   */
+  @Json(name = "editHistory")
+  val editHistory: EditHistory,
+
+  /**
+   * Represents the original candidates.
+   */
+  @Json(name = "originalCandidates")
+  val originalCandidates: OriginalCandidates
+)
+
+
+@JsonClass(generateAdapter = true)
+data class PlaceVisitSegment(
+  @Json(name = "location")
+  val location: Location
+)
+
+@JsonClass(generateAdapter = true)
+data class EditHistory(
+  @Json(name = "editEvent")
+  val editEvent: List<EditEvent>
+)
+
+@JsonClass(generateAdapter = true)
+data class EditEvent(
+  @Json(name = "editOperation")
+  val editOperation: List<String>,
+
+  @Json(name = "uiConfiguration")
+  val uiConfiguration: UIConfiguration
+)
+
+@JsonClass(generateAdapter = true)
+data class UIConfiguration(
+  @Json(name = "uiActivitySegmentConfiguration")
+  val uiActivitySegmentConfiguration: String,
+
+  @Json(name = "uiPlaceVisitConfiguration")
+  val uiPlaceVisitConfiguration: String
+)
+
+@JsonClass(generateAdapter = true)
+data class OriginalCandidates(
+  @Json(name = "placeVisitSegment")
+  val placeVisitSegment: PlaceVisitSegment
 )
 
 @JsonClass(generateAdapter = true)
@@ -531,17 +599,31 @@ data class Checkin(
   val placeId: String,
 )
 
+/**
+ * Represents a point with latitude, longitude, accuracy in meters, and timestamp.
+ */
 @JsonClass(generateAdapter = true)
 data class Point(
-  /** The latitude of the point */
+  /**
+   * Latitude coordinate of the point. Degrees multiplied by 10^7 and rounded to the nearest integer, in the range -900000000 to +900000000 (divide value by 10^7 for the usual range -90° to +90°). Example: 414216106
+   */
   @Json(name = "latE7")
   val latE7: Int,
-  /** The longitude of the point */
+  /**
+   * Longitude coordinate of the point. Degrees multiplied by 10^7 and rounded to the nearest integer, in the range -1800000000 to +1800000000 (divide value by 10^7 for the usual range -180° to +180°). Example: 21684775
+   */
   @Json(name = "lngE7")
   val lngE7: Int,
-  /** The timestamp of the point */
+  /**
+   * Approximate accuracy radius of the location measurement, in meters. A lower value means better precision. Example: 10
+   */
+  @Json(name = "accuracyMeters")
+  val accuracyMeters: Int,
+  /**
+   * Timestamp of the point. Example: "2022-03-03T08:27:48Z"
+   */
   @Json(name = "timestamp")
-  val timestamp: String?,
+  val timestamp: ZonedDateTime,
 )
 
 @JsonClass(generateAdapter = true)
@@ -600,17 +682,18 @@ data class RoadSegment(
   val placeId: String,
 )
 
+/**
+ * Represents a waypoint with latitude and longitude.
+ */
 @JsonClass(generateAdapter = true)
 data class Waypoint(
   /**
-   * Latitude coordinate of the waypoint. Degrees multiplied by 10^7 and rounded to the nearest integer, in the range -900000000 to +900000000 (divide value by 10^7 for the usual range -90° to +90°).
-   * Example: 414216106
+   * Latitude coordinate of the waypoint. Degrees multiplied by 10^7 and rounded to the nearest integer, in the range -900000000 to +900000000 (divide value by 10^7 for the usual range -90° to +90°). Example: 414216106
    */
   @Json(name = "latE7")
   val latE7: Int,
   /**
-   * Longitude coordinate of the waypoint. Degrees multiplied by 10^7 and rounded to the nearest integer, in the range -1800000000 to +1800000000 (divide value by 10^7 for the usual range -180° to +180°).
-   * Example: 21684775
+   * Longitude coordinate of the waypoint. Degrees multiplied by 10^7 and rounded to the nearest integer, in the range -1800000000 to +1800000000 (divide value by 10^7 for the usual range -180° to +180°). Example: 21684775
    */
   @Json(name = "lngE7")
   val lngE7: Int,
