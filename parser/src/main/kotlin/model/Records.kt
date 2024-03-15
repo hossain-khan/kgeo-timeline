@@ -121,7 +121,7 @@ data class AccessPoint(
   /**
    * Whether the device that scanned the access point is connected to it.
    */
-  val isConnected: Boolean,
+  val isConnected: Boolean?,
 )
 
 /**
