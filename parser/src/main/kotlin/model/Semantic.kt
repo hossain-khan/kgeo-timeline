@@ -396,50 +396,59 @@ data class SimplifiedRawPath(
   val points: List<Point>,
 )
 
+/**
+ * A path taken in a public transit system, such as a bus or a metro.
+ * Note that it does not describe an entire transit line, but only a specific journey a user does in a transit line.
+ */
 @JsonClass(generateAdapter = true)
 data class TransitPath(
   /**
    * List of locations of the transit stops used.
-   * Example: [TransitStop(latitudeE7 = 414083140, longitudeE7 = 21704000, placeId = "ChIJWey1zMWipBIRiNQSzpI4EDQ", address = "08025 Barcelona\nEspaña", name = "Sant Antoni Maria Claret-Lepant")]
    */
   @Json(name = "transitStops")
-  val transitStops: List<TransitStop>,
+  val transitStops: List<Location>,
+
   /**
    * Name of the transit line.
    * Example: "H8"
    */
   @Json(name = "name")
   val name: String,
+
   /**
    * Color of the transit line in hexadecimal in the form *RRGGBB*.
    * Example: "009EE0"
    */
   @Json(name = "hexRgbColor")
   val hexRgbColor: String,
+
   /**
-   * Google Maps Place ID of the transit line.
+   * Google Maps [Place ID](https://developers.google.com/maps/documentation/places/web-service/place-id) of the transit line.
    * Example: "ChIJQVEUoLuipBIRJO37wI4yyBs"
    */
   @Json(name = "linePlaceId")
   val linePlaceId: String,
+
   /**
    * Time information (departure and arrival times, both real and scheduled) for each transit stop used.
-   * Example: [StopTimeInfo(scheduledDepartureTimestamp = "2022-03-03T12:42:00Z", realtimeDepartureTimestamp = "2022-03-03T12:43:37Z")]
    */
   @Json(name = "stopTimesInfo")
   val stopTimesInfo: List<StopTimeInfo>,
+
   /**
    * Source of the location data of the transit path. Either `BACKFILLED` or `INFERRED`.
    * Example: "INFERRED"
    */
   @Json(name = "source")
   val source: String,
+
   /**
-   * Confidence of the transit path.
+   * Confidence level of the transit path data. Ranges from 0 to 1.
    * Example: 0.9155850640140931
    */
   @Json(name = "confidence")
   val confidence: Double,
+
   /**
    * Distance traveled with the transit path, in meters.
    * Example: 2341.0
@@ -520,40 +529,6 @@ data class Checkin(
   /** The place ID of the checkin */
   @Json(name = "placeId")
   val placeId: String,
-)
-
-@JsonClass(generateAdapter = true)
-data class TransitStop(
-  /**
-   * Latitude coordinate of the transit stop. Degrees multiplied by 10^7 and rounded to the nearest integer, in the range -900000000 to +900000000 (divide value by 10^7 for the usual range -90° to +90°).
-   * Example: 414083140
-   */
-  @Json(name = "latitudeE7")
-  val latitudeE7: Int,
-  /**
-   * Longitude coordinate of the transit stop. Degrees multiplied by 10^7 and rounded to the nearest integer, in the range -1800000000 to +1800000000 (divide value by 10^7 for the usual range -180° to +180°).
-   * Example: 21704000
-   */
-  @Json(name = "longitudeE7")
-  val longitudeE7: Int,
-  /**
-   * Google Maps Place ID of the transit stop.
-   * Example: "ChIJWey1zMWipBIRiNQSzpI4EDQ"
-   */
-  @Json(name = "placeId")
-  val placeId: String,
-  /**
-   * Address of the transit stop.
-   * Example: "08025 Barcelona\nEspaña"
-   */
-  @Json(name = "address")
-  val address: String,
-  /**
-   * Name of the transit stop.
-   * Example: "Sant Antoni Maria Claret-Lepant"
-   */
-  @Json(name = "name")
-  val name: String,
 )
 
 @JsonClass(generateAdapter = true)
