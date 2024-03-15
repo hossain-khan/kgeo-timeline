@@ -11,7 +11,7 @@ class SettingsTest {
   private val moshi: Moshi = Moshi.Builder().build()
 
   @Test
-  fun `given records json should parse all records`() {
+  fun `given settings json should parse all settings data`() {
     val json = javaClass.getResourceAsStream("/settings.json")!!.bufferedReader().readText()
     val settings = moshi.adapter(Settings::class.java).fromJson(json)!!
 

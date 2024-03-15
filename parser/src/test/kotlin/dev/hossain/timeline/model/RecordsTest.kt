@@ -5,7 +5,7 @@ import com.squareup.moshi.Moshi
 import kotlin.test.Test
 
 /**
- * Test cases for [Settings]
+ * Test cases for [Settings].
  */
 class RecordsTest {
   private val moshi: Moshi = Moshi.Builder().build()
