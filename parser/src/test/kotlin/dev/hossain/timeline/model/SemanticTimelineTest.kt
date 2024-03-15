@@ -5,13 +5,13 @@ import com.squareup.moshi.Moshi
 import kotlin.test.Test
 
 /**
- * Test cases for [Settings]
+ * Test cases for [SemanticTimeline].
  */
 class SemanticTimelineTest {
   private val moshi: Moshi = Moshi.Builder().build()
 
   @Test
-  fun `given records json should parse all records`() {
+  fun `given semantic timeline json should parse all timeline objects`() {
     val json = javaClass.getResourceAsStream("/semantic-2021-august.json")!!.bufferedReader().readText()
     val timeline = moshi.adapter(SemanticTimeline::class.java).fromJson(json)!!
 
