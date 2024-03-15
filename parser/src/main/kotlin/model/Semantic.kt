@@ -86,15 +86,136 @@ data class Location(
 
 @JsonClass(generateAdapter = true)
 data class PlaceVisit(
-  /** Location of the place */
+  /**
+   * Location of the place
+   * Example: Location(latitudeE7 = 414216106, longitudeE7 = 21684775, placeId = "ChIJk_s92NyipBIRUMnDG8Kq2Js")
+   */
   @Json(name = "location")
   val location: Location,
-  /** Duration of the place visit */
+
+  /**
+   * Latitude coordinate of the location. Degrees multiplied by 10^7 and rounded to the nearest integer, in the range -900000000 to +900000000 (divide value by 10^7 for the usual range -90° to +90°).
+   * Example: 414216106
+   */
+  @Json(name = "centerLatE7")
+  val centerLatE7: Int,
+
+  /**
+   * Longitude coordinate of the location. Degrees multiplied by 10^7 and rounded to the nearest integer, in the range -1800000000 to +1800000000 (divide value by 10^7 for the usual range -180° to +180°).
+   * Example: 21684775
+   */
+  @Json(name = "centerLngE7")
+  val centerLngE7: Int,
+
+  /**
+   * Duration of the place visit
+   * Example: Duration(startTimestamp = "2022-03-06T14:13:11.092Z", endTimestamp = "2022-03-06T15:13:11.092Z")
+   */
   @Json(name = "duration")
   val duration: Duration,
-  /** Categorized confidence for this place visit */
+
+  /**
+   * Categorized confidence for this place visit. One of: `LOW_CONFIDENCE`, `MEDIUM_CONFIDENCE`, `HIGH_CONFIDENCE` or `USER_CONFIRMED`.
+   * Example: "HIGH"
+   */
   @Json(name = "placeConfidence")
   val placeConfidence: String,
+
+  /**
+   * Visit confidence for this place visit
+   * Example: 95
+   */
+  @Json(name = "visitConfidence")
+  val visitConfidence: Int,
+
+  /**
+   * Location confidence for this place visit
+   * Example: 71
+   */
+  @Json(name = "locationConfidence")
+  val locationConfidence: Int,
+
+  /**
+   * Other candidate locations for this place visit
+   * Example: [Location(latitudeE7 = 414216106, longitudeE7 = 21684775, placeId = "ChIJk_s92NyipBIRUMnDG8Kq2Js")]
+   */
+  @Json(name = "otherCandidateLocations")
+  val otherCandidateLocations: List<Location>,
+
+  /**
+   * Child visits for this place visit
+   * Example: [PlaceVisit(location = Location(latitudeE7 = 414216106, longitudeE7 = 21684775, placeId = "ChIJk_s92NyipBIRUMnDG8Kq2Js"), centerLatE7 = 414216106, centerLngE7 = 21684775, duration = Duration(startTimestamp = "2022-03-06T14:13:11.092Z", endTimestamp = "2022-03-06T15:13:11.092Z"), placeConfidence = "HIGH", visitConfidence = 95, locationConfidence = 71, otherCandidateLocations = [Location(latitudeE7 = 414216106, longitudeE7 = 21684775, placeId = "ChIJk_s92NyipBIRUMnDG8Kq2Js")])]
+   */
+  @Json(name = "childVisits")
+  val childVisits: List<PlaceVisit>?,
+
+  /**
+   * Section ID for this place visit
+   * Example: "section123"
+   */
+  @Json(name = "sectionId")
+  val sectionId: String?,
+
+  /**
+   * Simplified raw path for this place visit.
+   */
+  @Json(name = "simplifiedRawPath")
+  val simplifiedRawPath: SimplifiedRawPath?,
+
+  /**
+   * Level (depth) of this place visit. This value increases by 1 with each recursive access to a [#/$defs/placeVisit/properties/childVisits] entry.
+   * Example: 1
+   */
+  @Json(name = "placeVisitLevel")
+  val placeVisitLevel: Int?,
+
+  /**
+   * Whether the user has manually edited the place visit. Can be `NOT_CONFIRMED` or `CONFIRMED`.
+   * Example: "CONFIRMED"
+   */
+  @Json(name = "editConfirmationStatus")
+  val editConfirmationStatus: String,
+
+  /**
+   * Edit-Action Metadata for this place visit
+   * Example: EditActionMetadata(lastEditedTimestamp = "2022-03-06T14:13:11.092Z")
+   */
+  @Json(name = "editActionMetadata")
+  val editActionMetadata: EditActionMetadata?,
+
+  /**
+   * Last-Edited Timestamp for this place visit
+   * Example: "2022-03-06T14:13:11.092Z"
+   */
+  @Json(name = "lastEditedTimestamp")
+  val lastEditedTimestamp: String?,
+
+  /**
+   * Place Visit Type for this place visit. Can be `SINGLE_PLACE`.
+   * Example: "SINGLE_PLACE"
+   */
+  @Json(name = "placeVisitType")
+  val placeVisitType: String,
+
+  /**
+   * Place Visit Importance for this place visit. One of `MAIN` or `TRANSITIONAL`.
+   * Example: "MAIN"
+   */
+  @Json(name = "placeVisitImportance")
+  val placeVisitImportance: String?,
+
+  /**
+   * Location Assertion Type for this place visit
+   * Example: "AREA"
+   */
+  @Json(name = "locationAssertionType")
+  val locationAssertionType: String?,
+
+  /**
+   * Checkin for this place visit
+   */
+  @Json(name = "checkin")
+  val checkin: Checkin?
 )
 
 @JsonClass(generateAdapter = true)
