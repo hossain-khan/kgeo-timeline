@@ -96,23 +96,115 @@ data class ActivitySegment(
   val lastEditedTimestamp: String?,
 )
 
+/**
+ * Represents a location with various properties.
+ *
+ * Example:
+ * ```json
+ * {
+ *   "latitudeE7": 414036299,
+ *   "longitudeE7": 21743558,
+ *   "placeId": "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+ *   "address": "C/ de Mallorca, 401\n08013 Barcelona\nEspanya",
+ *   "name": "La Sagrada Familia",
+ *   "semanticType": "TYPE_SEARCHED_ADDRESS",
+ *   "sourceInfo": {
+ *     "deviceTag": 1234567890
+ *   },
+ *   "locationConfidence": 87.07311,
+ *   "calibratedProbability": 76.20023
+ * }
+ * ```
+ */
 @JsonClass(generateAdapter = true)
 data class Location(
-  /** Latitude coordinate of the location */
-  @Json(name = "latitudeE7")
-  val latitudeE7: Int,
-  /** Longitude coordinate of the location */
-  @Json(name = "longitudeE7")
-  val longitudeE7: Int,
-  /** Google Maps Place ID of the location */
-  @Json(name = "placeId")
-  val placeId: String?,
-  /** Address of the location */
-  @Json(name = "address")
-  val address: String?,
-  /** Name of the location */
-  @Json(name = "name")
-  val name: String?,
+  /**
+   * Latitude coordinate of the location. Degrees multiplied by 10^7 and rounded to the nearest integer.
+   * Example: 414216106
+   */
+  @Json(name = "latitudeE7") val latitudeE7: Int,
+
+  /**
+   * Longitude coordinate of the location. Degrees multiplied by 10^7 and rounded to the nearest integer.
+   * Example: 21684775
+   */
+  @Json(name = "longitudeE7") val longitudeE7: Int,
+
+  /**
+   * Google Maps Place ID of the location.
+   * Example: "ChIJk_s92NyipBIRUMnDG8Kq2Js"
+   */
+  @Json(name = "placeId") val placeId: String,
+
+  /**
+   * Address of the location.
+   * Example: "C/ de Mallorca, 401\n08013 Barcelona\nEspanya"
+   */
+  @Json(name = "address") val address: String,
+
+  /**
+   * Name of the location.
+   * Example: "La Sagrada Familia"
+   */
+  @Json(name = "name") val name: String,
+
+  /**
+   * Place type based on semantic information specific to the user.
+   * Example: "TYPE_HOME"
+   */
+  @Json(name = "semanticType") val semanticType: String,
+
+  /**
+   * Approximate accuracy radius of the location measurement, in meters. A lower value means better precision.
+   * Example: 19
+   */
+  @Json(name = "accuracyMetres") val accuracyMetres: Int?,
+
+  /**
+   * Confidence in the location.
+   * Example: 100.0
+   */
+  @Json(name = "locationConfidence") val locationConfidence: Double?,
+
+  /**
+   * Whether this is the current location.
+   * Example: true
+   */
+  @Json(name = "isCurrentLocation") val isCurrentLocation: Boolean?,
+
+  /**
+   * Calibrated probability of the location.
+   * Example: 100.0
+   */
+  @Json(name = "calibratedProbability") val calibratedProbability: Double?,
+
+  /**
+   * Information on the source that provided the location.
+   * Example:
+   * {
+   *   "deviceTag": 1234567890
+   * }
+   */
+  @Json(name = "sourceInfo") val sourceInfo: DeviceSourceInfo,
+)
+
+/**
+ * Represents source information of a location.
+ *
+ * Example:
+ * ```json
+ * {
+ *   "deviceTag": 1234567890
+ * }
+ * ```
+ */
+@JsonClass(generateAdapter = true)
+data class DeviceSourceInfo(
+  /**
+   * Integer identifier associated with the device that obtained the location.
+   * Example: 1234567890
+   */
+  @Json(name = "deviceTag") val deviceTag: Int
 )
 
 @JsonClass(generateAdapter = true)
