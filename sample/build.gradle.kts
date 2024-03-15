@@ -1,21 +1,24 @@
 plugins {
-    kotlin("jvm")
+  kotlin("jvm")
 }
 
 group = "dev.hossain.timeline"
 version = "1.0-SNAPSHOT"
 
 repositories {
-    mavenCentral()
+  mavenCentral()
 }
 
 dependencies {
-    testImplementation("org.jetbrains.kotlin:kotlin-test")
+  implementation(project(":parser"))
+  implementation("com.squareup.moshi:moshi-kotlin:1.15.1")
+  implementation("com.jakewharton.picnic:picnic:0.7.0")
+  testImplementation("org.jetbrains.kotlin:kotlin-test")
 }
 
 tasks.test {
-    useJUnitPlatform()
+  useJUnitPlatform()
 }
 kotlin {
-    jvmToolchain(21)
+  jvmToolchain(21)
 }

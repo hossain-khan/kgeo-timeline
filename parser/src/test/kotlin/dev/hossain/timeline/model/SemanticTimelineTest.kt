@@ -1,26 +1,25 @@
 package dev.hossain.timeline.model
 
-import ZonedDateTimeAdapter
 import com.google.common.truth.Truth.assertThat
-import com.squareup.moshi.Moshi
+import dev.hossain.timeline.Parser
 import kotlin.test.Test
 
 /**
  * Test cases for [SemanticTimeline].
  */
 class SemanticTimelineTest {
-  private val moshi: Moshi = Moshi.Builder().add(ZonedDateTimeAdapter()).build()
+  private val parser = Parser()
 
   @Test
   fun `given semantic timeline json should parse all timeline objects`() {
-    val timeline = timelineFromJson("/semantic-2021-august.json")
+    val timeline: SemanticTimeline = parser.parseSemanticTimeline(loadJson("/semantic-2021-august.json"))
 
     assertThat(timeline.timelineObjects).hasSize(125)
   }
 
   @Test
   fun `given activity segment from semantic timeline json - parsers activity segment data`() {
-    val timeline = timelineFromJson("/semantic-2021-august.json")
+    val timeline: SemanticTimeline = parser.parseSemanticTimeline(loadJson("/semantic-2021-august.json"))
 
     val activitySegment = timeline.timelineObjects.first().activitySegment!!
     assertThat(activitySegment.activityType).isEqualTo("IN_PASSENGER_VEHICLE")
@@ -32,7 +31,7 @@ class SemanticTimelineTest {
 
   @Test
   fun `given place visit from semantic timeline json - parsers place visit data`() {
-    val timeline = timelineFromJson("/semantic-2021-august.json")
+    val timeline: SemanticTimeline = parser.parseSemanticTimeline(loadJson("/semantic-2021-august.json"))
 
     val placeVisit = timeline.timelineObjects[1].placeVisit!!
     assertThat(placeVisit.location.latitudeE7).isEqualTo(438865167)
@@ -53,9 +52,7 @@ class SemanticTimelineTest {
   /**
    * Parses the given JSON file and returns [SemanticTimeline] object.
    */
-  private fun timelineFromJson(jsonFile: String): SemanticTimeline {
-    val json = javaClass.getResourceAsStream(jsonFile)!!.bufferedReader().readText()
-    val timeline = moshi.adapter(SemanticTimeline::class.java).fromJson(json)!!
-    return timeline
+  private fun loadJson(jsonFile: String): String {
+    return javaClass.getResourceAsStream(jsonFile)!!.bufferedReader().readText()
   }
 }
