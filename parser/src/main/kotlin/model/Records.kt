@@ -162,11 +162,11 @@ data class Activity(
   /**
    * Type of activity detected.
    */
-  val type: String,
+  val type: String?,
   /**
    * Value from 0 to 100 indicating the likelihood that the user is performing this activity.
    * The larger the value, the more consistent the data used to perform the classification is with the detected activity.
    * Multiple activities may have high confidence values. For example, the `ON_FOOT` may have a confidence of 100 while the `RUNNING` activity may have a confidence of 95. The sum of the confidences of all detected activities for a classification does not have to be <= 100 since some activities are not mutually exclusive (for example, you can be walking while in a bus) and some activities are hierarchical (`ON_FOOT` is a generalization of `WALKING` and `RUNNING`).
    */
-  val confidence: Int,
+  val confidence: Int?,
 )

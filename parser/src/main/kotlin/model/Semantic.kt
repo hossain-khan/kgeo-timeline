@@ -4,29 +4,19 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class TimelineObjects(
-  /** The type of the TimelineObjects */
-  @Json(name = "type")
-  val type: String,
-  /** The title of the TimelineObjects */
-  @Json(name = "title")
-  val title: String,
-  /** The description of the TimelineObjects */
-  @Json(name = "description")
-  val description: String,
-  /** The properties of the TimelineObjects */
-  @Json(name = "properties")
-  val properties: TimelineObjectsProperties,
+data class SemanticTimeline(
+  @Json(name = "timelineObjects")
+  val timelineObjects: List<TimelineObjectsProperties> = emptyList(),
 )
 
 @JsonClass(generateAdapter = true)
 data class TimelineObjectsProperties(
   /** The activity segment of the TimelineObjectsProperties */
   @Json(name = "activitySegment")
-  val activitySegment: ActivitySegment,
+  val activitySegment: ActivitySegment?,
   /** The place visit of the TimelineObjectsProperties */
   @Json(name = "placeVisit")
-  val placeVisit: PlaceVisit,
+  val placeVisit: PlaceVisit?,
 )
 
 @JsonClass(generateAdapter = true)
@@ -42,37 +32,37 @@ data class ActivitySegment(
   val duration: Duration,
   /** The distance of the activity */
   @Json(name = "distance")
-  val distance: Int,
+  val distance: Int?,
   /** The type of the activity */
   @Json(name = "activityType")
   val activityType: String,
   /** The list of activities */
   @Json(name = "activities")
-  val activities: List<Activity>,
+  val activities: List<Activity> = emptyList(),
   /** The confidence of the activity */
   @Json(name = "confidence")
   val confidence: String,
   /** The waypoint path of the activity */
   @Json(name = "waypointPath")
-  val waypointPath: WaypointPath,
+  val waypointPath: WaypointPath?,
   /** The simplified raw path of the activity */
   @Json(name = "simplifiedRawPath")
-  val simplifiedRawPath: SimplifiedRawPath,
+  val simplifiedRawPath: SimplifiedRawPath?,
   /** The transit path of the activity */
   @Json(name = "transitPath")
-  val transitPath: TransitPath,
+  val transitPath: TransitPath?,
   /** The parking event of the activity */
   @Json(name = "parkingEvent")
-  val parkingEvent: ParkingEvent,
+  val parkingEvent: ParkingEvent?,
   /** The edit confirmation status of the activity */
   @Json(name = "editConfirmationStatus")
-  val editConfirmationStatus: String,
+  val editConfirmationStatus: String?,
   /** The edit action metadata of the activity */
   @Json(name = "editActionMetadata")
-  val editActionMetadata: EditActionMetadata,
+  val editActionMetadata: EditActionMetadata?,
   /** The last edited timestamp of the activity */
   @Json(name = "lastEditedTimestamp")
-  val lastEditedTimestamp: String,
+  val lastEditedTimestamp: String?,
 )
 
 @JsonClass(generateAdapter = true)
@@ -85,13 +75,13 @@ data class Location(
   val longitudeE7: Int,
   /** Google Maps Place ID of the location */
   @Json(name = "placeId")
-  val placeId: String,
+  val placeId: String?,
   /** Address of the location */
   @Json(name = "address")
-  val address: String,
+  val address: String?,
   /** Name of the location */
   @Json(name = "name")
-  val name: String,
+  val name: String?,
 )
 
 @JsonClass(generateAdapter = true)
@@ -155,7 +145,7 @@ data class ParkingEvent(
   val location: Location,
   /** The duration of the parking event */
   @Json(name = "duration")
-  val duration: Duration,
+  val duration: Duration?,
 )
 
 @JsonClass(generateAdapter = true)
@@ -198,7 +188,7 @@ data class Point(
   val lngE7: Int,
   /** The timestamp of the point */
   @Json(name = "timestamp")
-  val timestamp: String,
+  val timestamp: String?,
 )
 
 @JsonClass(generateAdapter = true)
