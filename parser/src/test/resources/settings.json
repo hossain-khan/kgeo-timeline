@@ -1,0 +1,106 @@
+{
+  "createdTime": "2013-08-10T18:07:41.251Z",
+  "modifiedTime": "2023-07-06T20:07:56.405Z",
+  "deviceSettings": [{
+    "deviceTag": 279958700,
+    "reportingEnabled": true,
+    "devicePrettyName": "SM-S911W",
+    "platformType": "ANDROID",
+    "deviceCreationTime": "2023-07-06T20:07:56.405Z",
+    "latestLocationReportingSettingChange": {
+      "reportingEnabledModificationTime": "2023-07-06T20:07:56.405Z"
+    },
+    "androidOsLevel": 34,
+    "deviceSpec": {
+      "manufacturer": "samsung",
+      "brand": "samsung",
+      "product": "dm1qcsx",
+      "device": "dm1q",
+      "model": "SM-S911W",
+      "isLowRam": false
+    },
+    "deviceActiveness": {
+      "hasSavedTimelineData": true,
+      "observedPlaceVisitsFor30PercentOfTheLast7d": true
+    }
+  }, {
+    "deviceTag": -1182793264,
+    "reportingEnabled": true,
+    "legalCountryCode": "ca",
+    "devicePrettyName": "Pixel 2",
+    "platformType": "ANDROID",
+    "deviceCreationTime": "2022-09-18T14:46:38.958Z",
+    "latestLocationReportingSettingChange": {
+      "reportingEnabledModificationTime": "2022-09-18T14:46:38.958Z"
+    },
+    "androidOsLevel": 30,
+    "deviceSpec": {
+      "manufacturer": "Google",
+      "brand": "google",
+      "product": "walleye",
+      "device": "walleye",
+      "model": "Pixel 2",
+      "isLowRam": false
+    },
+    "deviceActiveness": {
+      "hasSavedTimelineData": true
+    }
+  }, {
+    "deviceTag": -196317497,
+    "reportingEnabled": true,
+    "devicePrettyName": "sp9853i_1h10_vmm",
+    "platformType": "ANDROID",
+    "deviceCreationTime": "2022-06-24T12:55:56.922Z",
+    "latestLocationReportingSettingChange": {
+      "reportingEnabledModificationTime": "2022-06-24T12:55:56.922Z"
+    },
+    "androidOsLevel": 27,
+    "deviceSpec": {
+      "manufacturer": "SPRD",
+      "brand": "SPRD",
+      "product": "sp9853i_1h10_vmmTos",
+      "device": "sp9853i_1h10",
+      "model": "sp9853i_1h10_vmm",
+      "isLowRam": false
+    },
+    "deviceActiveness": {
+      "hasSavedTimelineData": false,
+      "observedPlaceVisitsFor30PercentOfTheLast7d": false
+    }
+  }, {
+    "deviceTag": -1379988581,
+    "reportingEnabled": true,
+    "legalCountryCode": "us",
+    "devicePrettyName": "Max’s iPhone",
+    "platformType": "IOS",
+    "deviceCreationTime": "2019-03-29T19:05:55.562Z",
+    "latestLocationReportingSettingChange": {
+      "reportingEnabledModificationTime": "2019-04-11T02:17:58.601Z"
+    },
+    "iosVersion": "15.7.2",
+    "deviceSpec": {
+      "device": "iPhone9,1"
+    }
+  }],
+  "hasReportedLocations": true,
+  "hasSetRetention": false,
+  "encryptedBackupsControls": {
+    "279958700": {
+      "enabled": false
+    },
+    "-1379988581": {
+      "enabled": false
+    },
+    "-1182793264": {
+      "enabled": false
+    },
+    "-196317497": {
+      "enabled": false
+    }
+  },
+  "retentionControl": {
+    "retentionWindowDays": 2147483647
+  },
+  "timelineEnabled": true,
+  "timelineDeletionTime": "2015-10-05T15:57:38.483Z"
+}

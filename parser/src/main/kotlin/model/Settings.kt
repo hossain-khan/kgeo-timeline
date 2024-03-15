@@ -18,16 +18,16 @@ data class Settings(
   /**
    * Whether Location History is enabled on this Google account (controlled in the [Activity Controls](https://myactivity.google.com/activitycontrols?settings=location) page).
    */
-  val historyEnabled: Boolean,
+  val historyEnabled: Boolean?,
   /**
    * List of devices associated with the Location History information on this Google account.
    */
-  val deviceSettings: List<DeviceSettings>,
+  val deviceSettings: List<DeviceSettings> = emptyList(),
   /**
    * Number of days the Location History information is retained in this Google account. Corresponds to the *Auto-delete* setting in the [Activity Controls](https://myactivity.google.com/activitycontrols?settings=location) page.
    * This value should be ignored if [#/properties/hasSetRetention] is false.
    */
-  val retentionWindowDays: Int,
+  val retentionWindowDays: Int?,
   /**
    * Whether this Google account has any reported Location History information.
    */
@@ -55,7 +55,7 @@ data class DeviceSettings(
   /**
    * Two-letter [ISO 3166 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
    */
-  val legalCountryCode: String,
+  val legalCountryCode: String?,
   /**
    * Pretty name of the device, recommended for user-facing applications.
    */
@@ -75,11 +75,11 @@ data class DeviceSettings(
   /**
    * The version of the device's operating system (only applies to Android devices). Corresponds to the API Level (e.g. 28 is Android 9 *Pie*).
    */
-  val androidOsLevel: Int,
+  val androidOsLevel: Int?,
   /**
    * Technical information and specifications about the device.
    */
-  val deviceSpec: DeviceSpec,
+  val deviceSpec: DeviceSpec?,
 )
 
 /**
@@ -101,25 +101,25 @@ data class DeviceSpec(
   /**
    * Manufacturer of the device.
    */
-  val manufacturer: String,
+  val manufacturer: String?,
   /**
    * Brand of the device.
    */
-  val brand: String,
+  val brand: String?,
   /**
    * Product name of the device.
    */
-  val product: String,
+  val product: String?,
   /**
    * Name of the device.
    */
-  val device: String,
+  val device: String?,
   /**
    * Model of the device.
    */
-  val model: String,
+  val model: String?,
   /**
    * Whether the device is considered low-ram.
    */
-  val isLowRam: Boolean,
+  val isLowRam: Boolean?,
 )
