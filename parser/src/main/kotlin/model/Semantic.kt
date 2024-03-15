@@ -134,25 +134,25 @@ data class Location(
    * Google Maps Place ID of the location.
    * Example: "ChIJk_s92NyipBIRUMnDG8Kq2Js"
    */
-  @Json(name = "placeId") val placeId: String,
+  @Json(name = "placeId") val placeId: String?,
 
   /**
    * Address of the location.
    * Example: "C/ de Mallorca, 401\n08013 Barcelona\nEspanya"
    */
-  @Json(name = "address") val address: String,
+  @Json(name = "address") val address: String?,
 
   /**
    * Name of the location.
    * Example: "La Sagrada Familia"
    */
-  @Json(name = "name") val name: String,
+  @Json(name = "name") val name: String?,
 
   /**
    * Place type based on semantic information specific to the user.
    * Example: "TYPE_HOME"
    */
-  @Json(name = "semanticType") val semanticType: String,
+  @Json(name = "semanticType") val semanticType: String?,
 
   /**
    * Approximate accuracy radius of the location measurement, in meters. A lower value means better precision.
@@ -185,7 +185,7 @@ data class Location(
    *   "deviceTag": 1234567890
    * }
    */
-  @Json(name = "sourceInfo") val sourceInfo: DeviceSourceInfo,
+  @Json(name = "sourceInfo") val sourceInfo: DeviceSourceInfo?,
 )
 
 /**
@@ -323,24 +323,29 @@ data class PlaceVisit(
   val checkin: Checkin?,
 )
 
+/**
+ * Represents a duration of time defined by a start timestamp and an end timestamp.
+ * Example:
+ * ```json
+ * {
+ *   "startTimestamp": "2022-02-02T10:41:08.315Z",
+ *   "endTimestamp": "2022-02-02T10:45:09.962Z"
+ * }
+ * ```
+ */
 @JsonClass(generateAdapter = true)
 data class Duration(
-  /** Start timestamp of the duration */
-  @Json(name = "startTimestamp")
-  val startTimestamp: String,
-  /** End timestamp of the duration */
-  @Json(name = "endTimestamp")
-  val endTimestamp: String,
-)
+  /**
+   * Start timestamp of the duration.
+   * Example: "2022-02-02T10:41:08.315Z"
+   */
+  @Json(name = "startTimestamp") val startTimestamp: ZonedDateTime,
 
-@JsonClass(generateAdapter = true)
-data class ActivityDuplicate(
-  /** Type of activity */
-  @Json(name = "activityType")
-  val activityType: String,
-  /** Probability that the activity type is correct */
-  @Json(name = "probability")
-  val probability: Double,
+  /**
+   * End timestamp of the duration.
+   * Example: "2022-02-02T10:45:09.962Z"
+   */
+  @Json(name = "endTimestamp") val endTimestamp: ZonedDateTime
 )
 
 @JsonClass(generateAdapter = true)

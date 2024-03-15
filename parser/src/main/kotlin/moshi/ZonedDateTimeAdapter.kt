@@ -3,6 +3,9 @@ import com.squareup.moshi.ToJson
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
+/**
+ * Moshi adapter for [ZonedDateTime].
+ */
 class ZonedDateTimeAdapter {
     @ToJson
     fun toJson(zonedDateTime: ZonedDateTime): String {

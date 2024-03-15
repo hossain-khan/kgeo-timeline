@@ -100,17 +100,17 @@ class RecordsTestCopilot {
   fun `Activity should contain valid data`() {
     val activity =
       Activity(
-        type = "WALKING",
+        type = ActivityType.WALKING,
         confidence = 100,
       )
 
-    assertEquals("WALKING", activity.type)
+    assertEquals(ActivityType.WALKING, activity.type)
     assertEquals(100, activity.confidence)
   }
 
   @Test
   fun `Activity should contain valid confidence`() {
-    val activity = Activity(type = "WALKING", confidence = 80)
+    val activity = Activity(type = ActivityType.WALKING, confidence = 80)
     assertTrue(activity.confidence in 0..100)
   }
 }

@@ -162,7 +162,7 @@ data class Activity(
   /**
    * Type of activity detected.
    */
-  val type: String?,
+  val type: ActivityType = ActivityType.UNKNOWN_ACTIVITY_TYPE,
   /**
    * Value from 0 to 100 indicating the likelihood that the user is performing this activity.
    * The larger the value, the more consistent the data used to perform the classification is with the detected activity.
@@ -170,3 +170,47 @@ data class Activity(
    */
   val confidence: Int?,
 )
+
+/**
+ * Enum class for different types of activities detected by the device, used in [Activity.type].
+ */
+enum class ActivityType(val title: String, val extraColor: String) {
+  UNKNOWN_ACTIVITY_TYPE("Moving", "#03a9f4"),
+  STILL("Still", "#01579b"),
+  WALKING("Walking", "#03a9f4"),
+  CYCLING("Cycling", "#4db6ac"),
+  IN_VEHICLE("In a vehicle", "#03a9f4"),
+  FLYING("Flying", "#3f51b5"),
+  RUNNING("Running", "#c2185b"),
+  IN_BUS("On a bus", "#01579b"),
+  IN_TRAIN("On a train", "#01579b"),
+  IN_SUBWAY("On the subway", "#01579b"),
+  IN_TRAM("On a tram", "#01579b"),
+  IN_FERRY("On a ferry", "#01579b"),
+  IN_CABLECAR("In a cable car", "#01579b"),
+  IN_FUNICULAR("On a funicular", "#01579b"),
+  HIKING("Hiking", "#c2185b"),
+  KAYAKING("Kayaking", "#4db6ac"),
+  KITESURFING("Kitesurfing", "#4db6ac"),
+  ROWING("Rowing", "#c2185b"),
+  SAILING("Sailing", "#4db6ac"),
+  SKATING("Skating", "#4db6ac"),
+  SKIING("Skiing", "#4db6ac"),
+  SKATEBOARDING("Skateboarding", "#4db6ac"),
+  SLEDDING("Sledding", "#4db6ac"),
+  SNOWBOARDING("Snowboarding", "#4db6ac"),
+  SNOWMOBILE("Snowmobiling", "#01579b"),
+  SNOWSHOEING("Snowshoeing", "#c2185b"),
+  SURFING("Surfing", "#4db6ac"),
+  SWIMMING("Swimming", "#c2185b"),
+  WALKING_NORDIC("Nordic walking", "#c2185b"),
+  IN_PASSENGER_VEHICLE("Driving", "#01579b"),
+  MOTORCYCLING("Motorcycling", "#01579b"),
+  BOATING("Boating", "#01579b"),
+  IN_WHEELCHAIR("By wheelchair", "#03a9f4"),
+  HORSEBACK_RIDING("Horseback riding", "#4db6ac"),
+  IN_GONDOLA_LIFT("In a gondola lift", "#01579b"),
+  CATCHING_POKEMON("Catching Pokémon", "#db4437"),
+  IN_TAXI("In a taxi", "#01579b"),
+  PARAGLIDING("Paragliding", "#4db6ac")
+}
