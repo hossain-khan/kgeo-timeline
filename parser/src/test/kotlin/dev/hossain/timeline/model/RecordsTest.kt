@@ -4,6 +4,9 @@ import com.google.common.truth.Truth.assertThat
 import com.squareup.moshi.Moshi
 import kotlin.test.Test
 
+/**
+ * Test cases for [Settings]
+ */
 class RecordsTest {
   private val moshi: Moshi = Moshi.Builder().build()
 
