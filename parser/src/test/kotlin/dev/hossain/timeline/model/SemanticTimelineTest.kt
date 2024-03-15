@@ -1,5 +1,6 @@
 package dev.hossain.timeline.model
 
+import ZonedDateTimeAdapter
 import com.google.common.truth.Truth.assertThat
 import com.squareup.moshi.Moshi
 import kotlin.test.Test
@@ -8,7 +9,7 @@ import kotlin.test.Test
  * Test cases for [SemanticTimeline].
  */
 class SemanticTimelineTest {
-  private val moshi: Moshi = Moshi.Builder().build()
+  private val moshi: Moshi = Moshi.Builder().add(ZonedDateTimeAdapter()).build()
 
   @Test
   fun `given semantic timeline json should parse all timeline objects`() {
@@ -44,8 +45,8 @@ class SemanticTimelineTest {
     assertThat(placeVisit.childVisits).isNull()
     assertThat(placeVisit.sectionId).isNull()
 
-    assertThat(placeVisit.duration.startTimestamp).isEqualTo("2021-08-01T01:22:24Z")
-    assertThat(placeVisit.duration.endTimestamp).isEqualTo("2021-08-01T01:25:36Z")
+    assertThat(placeVisit.duration.startTimestamp.toString()).isEqualTo("2021-08-01T01:22:24Z")
+    assertThat(placeVisit.duration.endTimestamp.toString()).isEqualTo("2021-08-01T01:25:36Z")
     assertThat(placeVisit.placeConfidence).isEqualTo("HIGH_CONFIDENCE")
   }
 
