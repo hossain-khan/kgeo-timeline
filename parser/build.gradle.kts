@@ -19,7 +19,7 @@ repositories {
 
 dependencies {
   implementation("com.squareup.moshi:moshi-kotlin:1.15.0")
-  ksp("com.squareup.moshi:moshi-kotlin-codegen:1.15.0")
+  ksp("com.squareup.moshi:moshi-kotlin-codegen:1.15.1")
   implementation("com.squareup.okio:okio:3.9.0")
   testImplementation("org.jetbrains.kotlin:kotlin-test")
   // https://github.com/google/truth
