@@ -1,4 +1,4 @@
-# google-location-history
+# KGeoTimeline 📍
 Kotlin library for parsing Google Location History (Timeline) data.
 
 ## 🚧 WIP
