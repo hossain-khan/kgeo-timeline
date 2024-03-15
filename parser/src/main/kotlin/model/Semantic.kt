@@ -21,48 +21,91 @@ data class TimelineObjectsProperties(
 
 @JsonClass(generateAdapter = true)
 data class ActivitySegment(
-  /** The start location of the activity */
+  /**
+   * Start location of the activity.
+   */
   @Json(name = "startLocation")
   val startLocation: Location,
-  /** The end location of the activity */
+
+  /**
+   * End location of the activity.
+   */
   @Json(name = "endLocation")
   val endLocation: Location,
-  /** The duration of the activity */
+
+  /**
+   * Duration of the activity.
+   * Example: Duration(startTimestamp = "2022-03-03T12:22:24Z", endTimestamp = "2022-03-03T12:43:34Z")
+   */
   @Json(name = "duration")
   val duration: Duration,
-  /** The distance of the activity */
+
+  /**
+   * Distance traveled during the activity, in meters.
+   * Example: 2640
+   */
   @Json(name = "distance")
   val distance: Int?,
-  /** The type of the activity */
+
+  /**
+   * Best match activity type. Corresponds to the activity type with the highest probability in activities.
+   * Example: "IN_BUS"
+   */
   @Json(name = "activityType")
   val activityType: String,
-  /** The list of activities */
+
+  /**
+   * List of all the considered candidate activity types and their probabilities. The sum of all the probabilities is always <= 100.
+   * Example: [Activity(activityType = "IN_BUS", probability = 85.6847882270813), Activity(activityType = "WALKING", probability = 8.418431878089905)]
+   */
   @Json(name = "activities")
   val activities: List<Activity> = emptyList(),
-  /** The confidence of the activity */
+
+  /**
+   * Confidence that the chosen activity type is correct. One of: `LOW`, `MEDIUM`, `HIGH` or `UNKNOWN_CONFIDENCE`. Activities that have been manually confirmed always have a confidence of `HIGH`.
+   * Example: "HIGH"
+   */
   @Json(name = "confidence")
   val confidence: String,
-  /** The waypoint path of the activity */
+
   @Json(name = "waypointPath")
   val waypointPath: WaypointPath?,
+
   /** The simplified raw path of the activity */
   @Json(name = "simplifiedRawPath")
   val simplifiedRawPath: SimplifiedRawPath?,
-  /** The transit path of the activity */
+
+  /**
+   * Path taken in a public transit system, such as a bus or a metro.
+   * Example: TransitPath(transitStops = [TransitStop(latitudeE7 = 414083140, longitudeE7 = 21704000, placeId = "ChIJWey1zMWipBIRiNQSzpI4EDQ", address = "08025 Barcelona\nEspaña", name = "Sant Antoni Maria Claret-Lepant")], name = "H8", hexRgbColor = "009EE0", linePlaceId = "ChIJQVEUoLuipBIRJO37wI4yyBs", stopTimesInfo = [StopTimeInfo(scheduledDepartureTimestamp = "2022-03-03T12:42:00Z", realtimeDepartureTimestamp = "2022-03-03T12:43:37Z")], source = "INFERRED", confidence = 0.9155850640140931, distanceMeters = 2341.0)
+   */
   @Json(name = "transitPath")
   val transitPath: TransitPath?,
+
   /** The parking event of the activity */
   @Json(name = "parkingEvent")
   val parkingEvent: ParkingEvent?,
-  /** The edit confirmation status of the activity */
+
+  /**
+   * Whether the user has manually edited the activity segment. Can be `NOT_CONFIRMED` or `CONFIRMED`.
+   * Example: "CONFIRMED"
+   */
   @Json(name = "editConfirmationStatus")
   val editConfirmationStatus: String?,
-  /** The edit action metadata of the activity */
+
+  /**
+   * Edit-Action Metadata for this activity segment
+   * Example: EditActionMetadata(lastEditedTimestamp = "2022-03-06T14:13:11.092Z")
+   */
   @Json(name = "editActionMetadata")
   val editActionMetadata: EditActionMetadata?,
-  /** The last edited timestamp of the activity */
+
+  /**
+   * Last-Edited Timestamp for this activity segment
+   * Example: "2022-03-06T14:13:11.092Z"
+   */
   @Json(name = "lastEditedTimestamp")
-  val lastEditedTimestamp: String?,
+  val lastEditedTimestamp: String?
 )
 
 @JsonClass(generateAdapter = true)
@@ -314,7 +357,81 @@ data class Point(
 
 @JsonClass(generateAdapter = true)
 data class WaypointPath(
-  /** The waypoints in the waypoint path */
+  /**
+   * Waypoints of the path
+   * Example: [Waypoint(latE7 = 416119834, lngE7 = 21768624), Waypoint(latE7 = 416117012, lngE7 = 21899302), Waypoint(latE7 = 416119262, lngE7 = 21802315)]
+   */
   @Json(name = "waypoints")
-  val waypoints: List<Point>,
+  val waypoints: List<Waypoint>,
+
+  /**
+   * Source of the location data of the path. Either `BACKFILLED` or `INFERRED`.
+   * Example: "INFERRED"
+   */
+  @Json(name = "source")
+  val source: String,
+
+  /**
+   * Total distance of the path, in meters.
+   * Example: 396.34176716755843
+   */
+  @Json(name = "distanceMeters")
+  val distanceMeters: Double,
+
+  /**
+   * Travel mode of the path. Can be `WALK`, `DRIVE`, or `BICYCLE`.
+   * Example: "WALK"
+   */
+  @Json(name = "travelMode")
+  val travelMode: String,
+
+  /**
+   * Confidence of the path.
+   * Example: 0.7986568220419046
+   */
+  @Json(name = "confidence")
+  val confidence: Double,
+
+  /**
+   * Road segments of the path.
+   * Example: [RoadSegment(duration = "8s", placeId = "ChIJk_s92NyipBIRUMnDG8Kq2Js")]
+   */
+  @Json(name = "roadSegment")
+  val roadSegment: List<RoadSegment> = emptyList()
+)
+
+
+@JsonClass(generateAdapter = true)
+data class RoadSegment(
+  /**
+   * Duration of the road segment.
+   * Example: "8s"
+   */
+  @Json(name = "duration")
+  val duration: String,
+
+  /**
+   * Google Maps Place ID of the location.
+   * Example: "ChIJk_s92NyipBIRUMnDG8Kq2Js"
+   */
+  @Json(name = "placeId")
+  val placeId: String
+)
+
+
+@JsonClass(generateAdapter = true)
+data class Waypoint(
+  /**
+   * Latitude coordinate of the waypoint. Degrees multiplied by 10^7 and rounded to the nearest integer, in the range -900000000 to +900000000 (divide value by 10^7 for the usual range -90° to +90°).
+   * Example: 414216106
+   */
+  @Json(name = "latE7")
+  val latE7: Int,
+
+  /**
+   * Longitude coordinate of the waypoint. Degrees multiplied by 10^7 and rounded to the nearest integer, in the range -1800000000 to +1800000000 (divide value by 10^7 for the usual range -180° to +180°).
+   * Example: 21684775
+   */
+  @Json(name = "lngE7")
+  val lngE7: Int
 )
