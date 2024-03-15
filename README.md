@@ -11,3 +11,11 @@ Work in progress.
 # References
 
 * https://github.com/CarlosBergillos/LocationHistoryFormat
+
+
+## Related Projects
+Some related projects
+
+* https://github.com/pwall567/json-kotlin-schema
+* https://github.com/pwall567/json-kotlin-schema-codegen
+* https://github.com/jamesjarvis/mappyboi
