@@ -1,5 +1,6 @@
 package dev.hossain.timeline.model
 
+import ZonedDateTimeAdapter
 import com.google.common.truth.Truth.assertThat
 import com.squareup.moshi.Moshi
 import kotlin.test.Test
@@ -8,7 +9,9 @@ import kotlin.test.Test
  * Test cases for [Settings].
  */
 class RecordsTest {
-  private val moshi: Moshi = Moshi.Builder().build()
+  private val moshi: Moshi = Moshi.Builder()
+    .add(ZonedDateTimeAdapter())
+    .build()
 
   @Test
   fun `given records json should parse all records`() {

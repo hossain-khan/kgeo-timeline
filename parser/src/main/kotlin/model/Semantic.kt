@@ -2,6 +2,7 @@ package dev.hossain.timeline.model
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import java.time.ZonedDateTime
 
 @JsonClass(generateAdapter = true)
 data class SemanticTimeline(
@@ -337,10 +338,41 @@ data class ParkingEvent(
   /** The location of the parking event */
   @Json(name = "location")
   val location: Location,
-  /** The duration of the parking event */
-  @Json(name = "duration")
-  val duration: Duration?,
+
+  @Json(name = "method")
+  val method: Method,
+
+  @Json(name = "locationSource")
+  val locationSource: LocationSource,
+
+  @Json(name = "timestamp")
+  val timestamp: ZonedDateTime
 )
+
+enum class Method {
+  @Json(name = "PERSONAL_VEHICLE_CONFIDENCE")
+  PERSONAL_VEHICLE_CONFIDENCE,
+
+  @Json(name = "END_OF_ACTIVITY_SEGMENT")
+  END_OF_ACTIVITY_SEGMENT,
+
+  @Json(name = "EXITING_VEHICLE_SIGNAL")
+  EXITING_VEHICLE_SIGNAL,
+
+  @Json(name = "UNDEFINED")
+  UNDEFINED
+}
+
+enum class LocationSource {
+  @Json(name = "FROM_RAW_LOCATION")
+  FROM_RAW_LOCATION,
+
+  @Json(name = "NOT_FROM_RAW_LOCATION")
+  NOT_FROM_RAW_LOCATION,
+
+  @Json(name = "UNKNOWN")
+  UNKNOWN
+}
 
 @JsonClass(generateAdapter = true)
 data class EditActionMetadata(
