@@ -101,12 +101,10 @@ data class ActivitySegment(
   val lastEditedTimestamp: String?,
 )
 
-
 /**
  * Represents the edit confirmation status.
  */
 enum class EditConfirmationStatus {
-
   /**
    * Indicates the user has not manually edited the entry.
    */
@@ -115,7 +113,7 @@ enum class EditConfirmationStatus {
   /**
    * Indicates the user has manually edited the entry.
    */
-  CONFIRMED
+  CONFIRMED,
 }
 
 /**
@@ -483,15 +481,45 @@ data class StopTimeInfo(
   val realtimeDepartureTimestamp: String,
 )
 
+/**
+ * Represents a parking event.
+ * Example:
+ * ```json
+ * {
+ *   "location": {
+ *     "latitudeE7": 412518975,
+ *     "longitudeE7": 21683133,
+ *     "accuracyMetres": 19
+ *   },
+ *   "method": "EXITING_VEHICLE_SIGNAL",
+ *   "locationSource": "FROM_RAW_LOCATION",
+ *   "timestamp": "2022-02-27T14:47:16.731Z"
+ * }
+ * ```
+ */
 @JsonClass(generateAdapter = true)
 data class ParkingEvent(
-  /** The location of the parking event */
+  /**
+   * Location of the parking event.
+   */
   @Json(name = "location")
   val location: Location,
+  /**
+   * Method of parking event detection.
+   * Example: "EXITING_VEHICLE_SIGNAL"
+   */
   @Json(name = "method")
   val method: Method,
+  /**
+   * Source of the location data.
+   * Example: "FROM_RAW_LOCATION"
+   */
   @Json(name = "locationSource")
   val locationSource: LocationSource,
+  /**
+   * Timestamp of the parking event.
+   * Example: "2022-02-27T14:47:16.731Z"
+   */
   @Json(name = "timestamp")
   val timestamp: ZonedDateTime,
 )
@@ -526,67 +554,60 @@ enum class LocationSource {
  */
 @JsonClass(generateAdapter = true)
 data class EditActionMetadata(
-
   /**
    * Represents the activity segment.
    */
   @Json(name = "activitySegment")
   val activitySegment: ActivitySegment,
-
   /**
    * Represents the place visit segment.
    */
   @Json(name = "placeVisitSegment")
   val placeVisitSegment: PlaceVisitSegment,
-
   /**
    * Represents the edit history.
    */
   @Json(name = "editHistory")
   val editHistory: EditHistory,
-
   /**
    * Represents the original candidates.
    */
   @Json(name = "originalCandidates")
-  val originalCandidates: OriginalCandidates
+  val originalCandidates: OriginalCandidates,
 )
-
 
 @JsonClass(generateAdapter = true)
 data class PlaceVisitSegment(
   @Json(name = "location")
-  val location: Location
+  val location: Location,
 )
 
 @JsonClass(generateAdapter = true)
 data class EditHistory(
   @Json(name = "editEvent")
-  val editEvent: List<EditEvent>
+  val editEvent: List<EditEvent>,
 )
 
 @JsonClass(generateAdapter = true)
 data class EditEvent(
   @Json(name = "editOperation")
   val editOperation: List<String>,
-
   @Json(name = "uiConfiguration")
-  val uiConfiguration: UIConfiguration
+  val uiConfiguration: UIConfiguration,
 )
 
 @JsonClass(generateAdapter = true)
 data class UIConfiguration(
   @Json(name = "uiActivitySegmentConfiguration")
   val uiActivitySegmentConfiguration: String,
-
   @Json(name = "uiPlaceVisitConfiguration")
-  val uiPlaceVisitConfiguration: String
+  val uiPlaceVisitConfiguration: String,
 )
 
 @JsonClass(generateAdapter = true)
 data class OriginalCandidates(
   @Json(name = "placeVisitSegment")
-  val placeVisitSegment: PlaceVisitSegment
+  val placeVisitSegment: PlaceVisitSegment,
 )
 
 @JsonClass(generateAdapter = true)
