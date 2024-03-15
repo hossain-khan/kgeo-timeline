@@ -1,0 +1,335 @@
+{
+  "locations": [
+    {
+      "latitudeE7": 437789954,
+      "longitudeE7": -794176419,
+      "accuracy": 30,
+      "activity": [
+        {
+          "activity": [
+            {
+              "type": "UNKNOWN",
+              "confidence": 58
+            },
+            {
+              "type": "STILL",
+              "confidence": 25
+            },
+            {
+              "type": "IN_VEHICLE",
+              "confidence": 17
+            }
+          ],
+          "timestamp": "2015-10-10T18:47:31.321Z"
+        },
+        {
+          "activity": [
+            {
+              "type": "STILL",
+              "confidence": 54
+            },
+            {
+              "type": "IN_VEHICLE",
+              "confidence": 23
+            },
+            {
+              "type": "UNKNOWN",
+              "confidence": 23
+            }
+          ],
+          "timestamp": "2015-10-10T18:47:01.532Z"
+        }
+      ],
+      "source": "WIFI",
+      "deviceTag": 1433424142,
+      "timestamp": "2015-10-10T18:47:02.597Z"
+    },
+    {
+      "latitudeE7": 437789954,
+      "longitudeE7": -794176419,
+      "accuracy": 30,
+      "source": "WIFI",
+      "deviceTag": 1433424142,
+      "timestamp": "2015-10-10T18:48:02.603Z"
+    },
+    {
+      "latitudeE7": 437789954,
+      "longitudeE7": -794176419,
+      "accuracy": 30,
+      "activity": [
+        {
+          "activity": [
+            {
+              "type": "IN_VEHICLE",
+              "confidence": 38
+            },
+            {
+              "type": "STILL",
+              "confidence": 31
+            },
+            {
+              "type": "UNKNOWN",
+              "confidence": 29
+            },
+            {
+              "type": "ON_FOOT",
+              "confidence": 2
+            },
+            {
+              "type": "WALKING",
+              "confidence": 2
+            }
+          ],
+          "timestamp": "2015-10-10T18:49:33.686Z"
+        }
+      ],
+      "source": "WIFI",
+      "deviceTag": 1433424142,
+      "timestamp": "2015-10-10T18:49:04.612Z"
+    },
+    {
+      "latitudeE7": 437790616,
+      "longitudeE7": -794176478,
+      "accuracy": 22,
+      "source": "WIFI",
+      "deviceTag": 1433424142,
+      "timestamp": "2015-10-10T18:50:02.768Z"
+    },
+    {
+      "latitudeE7": 437898152,
+      "longitudeE7": -794373202,
+      "accuracy": 997,
+      "source": "UNKNOWN",
+      "deviceTag": 1433424142,
+      "timestamp": "2015-10-10T18:50:33.308Z"
+    },
+    {
+      "latitudeE7": 437790042,
+      "longitudeE7": -794176223,
+      "accuracy": 33,
+      "activity": [
+        {
+          "activity": [
+            {
+              "type": "STILL",
+              "confidence": 52
+            },
+            {
+              "type": "UNKNOWN",
+              "confidence": 29
+            },
+            {
+              "type": "IN_VEHICLE",
+              "confidence": 20
+            }
+          ],
+          "timestamp": "2015-10-10T18:51:04.558Z"
+        }
+      ],
+      "source": "WIFI",
+      "deviceTag": 1433424142,
+      "timestamp": "2015-10-10T18:51:22.803Z"
+    },
+    {
+      "latitudeE7": 437790391,
+      "longitudeE7": -794176839,
+      "accuracy": 31,
+      "activity": [
+        {
+          "activity": [
+            {
+              "type": "STILL",
+              "confidence": 100
+            }
+          ],
+          "timestamp": "2015-10-10T18:52:33.834Z"
+        }
+      ],
+      "source": "WIFI",
+      "deviceTag": -663413243,
+      "deviceDesignation": "UNKNOWN",
+      "timestamp": "2015-10-10T18:51:31.099Z"
+    },
+    {
+      "latitudeE7": 437790042,
+      "longitudeE7": -794176223,
+      "accuracy": 33,
+      "activity": [
+        {
+          "activity": [
+            {
+              "type": "TILTING",
+              "confidence": 100
+            }
+          ],
+          "timestamp": "2015-10-10T18:54:35.114Z"
+        },
+        {
+          "activity": [
+            {
+              "type": "UNKNOWN",
+              "confidence": 41
+            },
+            {
+              "type": "STILL",
+              "confidence": 38
+            },
+            {
+              "type": "IN_VEHICLE",
+              "confidence": 21
+            }
+          ],
+          "timestamp": "2015-10-10T18:54:04.983Z"
+        },
+        {
+          "activity": [
+            {
+              "type": "TILTING",
+              "confidence": 100
+            }
+          ],
+          "timestamp": "2015-10-10T18:53:34.912Z"
+        },
+        {
+          "activity": [
+            {
+              "type": "UNKNOWN",
+              "confidence": 43
+            },
+            {
+              "type": "STILL",
+              "confidence": 39
+            },
+            {
+              "type": "IN_VEHICLE",
+              "confidence": 17
+            },
+            {
+              "type": "ON_BICYCLE",
+              "confidence": 2
+            }
+          ],
+          "timestamp": "2015-10-10T18:53:04.840Z"
+        },
+        {
+          "activity": [
+            {
+              "type": "TILTING",
+              "confidence": 100
+            }
+          ],
+          "timestamp": "2015-10-10T18:52:34.760Z"
+        },
+        {
+          "activity": [
+            {
+              "type": "STILL",
+              "confidence": 92
+            },
+            {
+              "type": "IN_VEHICLE",
+              "confidence": 8
+            }
+          ],
+          "timestamp": "2015-10-10T18:52:04.680Z"
+        }
+      ],
+      "source": "WIFI",
+      "deviceTag": 1433424142,
+      "timestamp": "2015-10-10T18:53:36.533Z"
+    },
+    {
+      "latitudeE7": 437790042,
+      "longitudeE7": -794176223,
+      "accuracy": 33,
+      "activity": [
+        {
+          "activity": [
+            {
+              "type": "STILL",
+              "confidence": 100
+            }
+          ],
+          "timestamp": "2015-10-10T18:56:05.508Z"
+        },
+        {
+          "activity": [
+            {
+              "type": "STILL",
+              "confidence": 100
+            }
+          ],
+          "timestamp": "2015-10-10T18:55:05.245Z"
+        }
+      ],
+      "source": "WIFI",
+      "deviceTag": 1433424142,
+      "timestamp": "2015-10-10T18:55:38.176Z"
+    },
+    {
+      "latitudeE7": 437790171,
+      "longitudeE7": -794176222,
+      "accuracy": 30,
+      "activity": [
+        {
+          "activity": [
+            {
+              "type": "STILL",
+              "confidence": 100
+            }
+          ],
+          "timestamp": "2015-10-10T18:55:35.318Z"
+        }
+      ],
+      "source": "WIFI",
+      "deviceTag": -663413243,
+      "deviceDesignation": "UNKNOWN",
+      "timestamp": "2015-10-10T18:56:35.762Z"
+    },
+    {
+      "latitudeE7": 437790309,
+      "longitudeE7": -794175893,
+      "accuracy": 33,
+      "source": "WIFI",
+      "deviceTag": 1433424142,
+      "timestamp": "2015-10-10T18:56:38.322Z"
+    },
+    {
+      "latitudeE7": 437790309,
+      "longitudeE7": -794175893,
+      "accuracy": 33,
+      "activity": [
+        {
+          "activity": [
+            {
+              "type": "STILL",
+              "confidence": 100
+            }
+          ],
+          "timestamp": "2015-10-10T18:59:40.705Z"
+        },
+        {
+          "activity": [
+            {
+              "type": "STILL",
+              "confidence": 100
+            }
+          ],
+          "timestamp": "2015-10-10T18:58:40.539Z"
+        },
+        {
+          "activity": [
+            {
+              "type": "STILL",
+              "confidence": 100
+            }
+          ],
+          "timestamp": "2015-10-10T18:57:39.508Z"
+        }
+      ],
+      "source": "WIFI",
+      "deviceTag": 1433424142,
+      "timestamp": "2015-10-10T18:58:40.399Z"
+    }
+  ]
+}

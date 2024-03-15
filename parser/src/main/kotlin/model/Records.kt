@@ -26,23 +26,23 @@ data class LocationRecord(
   /**
    * Information about the access points found in a Wi-Fi scan done by the device and associated with this location record.
    */
-  val activeWifiScan: WifiScan,
+  val activeWifiScan: WifiScan?,
   /**
    * Detected activity information at this location, as a list of activity records at slightly different timestamps but all associated with this location record.
    */
-  val activity: List<ActivityRecord>,
+  val activity: List<ActivityRecord>?,
   /**
    * Altitude above the WGS84 reference ellipsoid, in meters.
    */
-  val altitude: Int,
+  val altitude: Int?,
   /**
    * Whether the device was charging its battery or not at the time of the record.
    */
-  val batteryCharging: Boolean,
+  val batteryCharging: Boolean?,
   /**
    * Common values found are: `PRIMARY`, `UNKNOWN`.
    */
-  val deviceDesignation: String,
+  val deviceDesignation: String?,
   /**
    * Integer identifier (specific to Location History) associated with the device that uploaded the location. Refer to `deviceSettings` in Settings.json for information about the device with this `deviceTag`.
    */
@@ -50,32 +50,32 @@ data class LocationRecord(
   /**
    * The version of the device's operating system that provided this record. In Android devices, this corresponds to the API Level (e.g. 28 is Android 9 *Pie*).
    */
-  val osLevel: Int,
+  val osLevel: Int?,
   /**
    * Heading in degrees east of true north, from 0 to 359.
    */
-  val heading: Int,
+  val heading: Int?,
   /**
    * WGS84 Latitude coordinate of the location. Degrees multiplied by 10^7 and rounded to the nearest integer, in the range -900000000 to +900000000 (divide value by 10^7 for the usual range -90° to +90°).
    */
-  val latitudeE7: Int,
+  val latitudeE7: Int?,
   /**
    * Additional location metadata. List of different Wi-Fi scans associated with this location record.
    */
-  val locationMetadata: List<LocationMetadata>,
+  val locationMetadata: List<LocationMetadata>?,
   /**
    * WGS84 Longitude coordinate of the location. Degrees multiplied by 10^7 and rounded to the nearest integer, in the range -1800000000 to +1800000000 (divide value by 10^7 for the usual range -180° to +180°).
    */
-  val longitudeE7: Int,
+  val longitudeE7: Int?,
   /**
    * Platform of the device that provided this record. Valid values are: `ANDROID`, `IOS` and `UNKNOWN`.
    */
-  val platformType: String,
+  val platformType: String?,
   /**
    * Source (technology) that provided the location information for this record.
    * Common values are: `WIFI`, `CELL`, `GPS`, `UNKNOWN` (note: sometimes found in lowercase).
    */
-  val source: String,
+  val source: String?,
   /**
    * Timestamp (as an ISO 8601 string) of the record.
    */
@@ -83,11 +83,11 @@ data class LocationRecord(
   /**
    * Measured velocity (ground speed) in meters per second.
    */
-  val velocity: Int,
+  val velocity: Int?,
   /**
    * Calculated accuracy of the location's altitude measurement, in meters. A lower value means better precision.
    */
-  val verticalAccuracy: Int,
+  val verticalAccuracy: Int?,
 )
 
 /**
