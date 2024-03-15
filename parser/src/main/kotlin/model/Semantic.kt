@@ -4,6 +4,11 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import java.time.ZonedDateTime
 
+/**
+ * A Semantic Location History JSON file in a Google Takeout Location History extraction.
+ * Contains Semantic Location History information from the user's account.
+ * Typically, this will be a file containing data for a single month, with a name such as `2021_JANUARY.json`.
+ */
 @JsonClass(generateAdapter = true)
 data class SemanticTimeline(
   @Json(name = "timelineObjects")
