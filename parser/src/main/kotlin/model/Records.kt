@@ -121,7 +121,7 @@ data class AccessPoint(
   /**
    * Whether the device that scanned the access point is connected to it.
    */
-  val isConnected: Boolean,
+  val isConnected: Boolean?,
 )
 
 /**
@@ -178,26 +178,32 @@ enum class ActivityType(val title: String, val extraColor: String) {
   BOATING("Boating", "#01579b"),
   CATCHING_POKEMON("Catching Pokémon", "#db4437"),
   CYCLING("Cycling", "#4db6ac"),
+  EXITING_VEHICLE("Exiting a vehicle", "#01579b"),
   FLYING("Flying", "#3f51b5"),
   HIKING("Hiking", "#c2185b"),
   HORSEBACK_RIDING("Horseback riding", "#4db6ac"),
   IN_BUS("On a bus", "#01579b"),
   IN_CABLECAR("In a cable car", "#01579b"),
+  IN_CAR("In a car", "#01579b"),
   IN_FERRY("On a ferry", "#01579b"),
+  IN_FOUR_WHEELER_VEHICLE("In a four wheeler vehicle", "#01579b"),
   IN_FUNICULAR("On a funicular", "#01579b"),
   IN_GONDOLA_LIFT("In a gondola lift", "#01579b"),
   IN_PASSENGER_VEHICLE("Driving", "#01579b"),
+  IN_RAIL_VEHICLE("In a rail vehicle", "#01579b"),
+  IN_ROAD_VEHICLE("In a road vehicle", "#03a9f4"),
   IN_SUBWAY("On the subway", "#01579b"),
   IN_TAXI("In a taxi", "#01579b"),
   IN_TRAIN("On a train", "#01579b"),
   IN_TRAM("On a tram", "#01579b"),
+  IN_TWO_WHEELER_VEHICLE("On a two wheeler vehicle", "#01579b"),
   IN_VEHICLE("In a vehicle", "#03a9f4"),
   IN_WHEELCHAIR("By wheelchair", "#03a9f4"),
   KAYAKING("Kayaking", "#4db6ac"),
   KITESURFING("Kitesurfing", "#4db6ac"),
   MOTORCYCLING("Motorcycling", "#01579b"),
-  ON_FOOT("On foot", "#c2185b"),
   ON_BICYCLE("On a bicycle", "#4db6ac"),
+  ON_FOOT("On foot", "#c2185b"),
   PARAGLIDING("Paragliding", "#4db6ac"),
   ROWING("Rowing", "#c2185b"),
   RUNNING("Running", "#c2185b"),

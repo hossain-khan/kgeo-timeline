@@ -75,7 +75,7 @@ class RecordsTestCopilot {
     assertEquals("00:00:00:00:00:00", accessPoint.mac)
     assertEquals(100, accessPoint.strength)
     assertEquals(2400, accessPoint.frequencyMhz)
-    assertTrue(accessPoint.isConnected)
+    assertTrue(accessPoint.isConnected!!)
   }
 
   @Test
