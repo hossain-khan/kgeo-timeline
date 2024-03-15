@@ -32,3 +32,10 @@ tasks.test {
 kotlin {
   jvmToolchain(21)
 }
+
+ktlint {
+  debug = true
+  filter {
+    exclude { projectDir.toURI().relativize(it.file.toURI()).path.contains("/generated/") }
+  }
+}
