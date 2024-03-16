@@ -457,7 +457,7 @@ data class TransitPath(
    * Example: "INFERRED"
    */
   @Json(name = "source")
-  val source: String?,
+  val source: DataSource?,
   /**
    * Confidence level of the transit path data. Ranges from 0 to 1.
    * Example: 0.9155850640140931
@@ -554,6 +554,28 @@ enum class LocationSource {
 
   @Json(name = "UNKNOWN")
   UNKNOWN,
+}
+
+/**
+ * Represents the source of the location data of the path.
+ * Example: "INFERRED"
+ */
+enum class DataSource {
+
+  /**
+   * Indicates the location data of the path is backfilled.
+   */
+  BACKFILLED,
+
+  /**
+   * Indicates the location data of the path is inferred.
+   */
+  INFERRED,
+
+  /**
+   * Indicates the location data of the path is resnapped for edit.
+   */
+  RESNAPPED_FOR_EDIT
 }
 
 /**
@@ -667,7 +689,7 @@ data class WaypointPath(
    * Example: "INFERRED"
    */
   @Json(name = "source")
-  val source: String?,
+  val source: DataSource?,
   /**
    * Total distance of the path, in meters.
    * Example: 396.34176716755843
