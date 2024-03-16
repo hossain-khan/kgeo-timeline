@@ -75,7 +75,7 @@ data class LocationRecord(
    * Source (technology) that provided the location information for this record.
    * Common values are: `WIFI`, `CELL`, `GPS`, `UNKNOWN` (note: sometimes found in lowercase).
    */
-  val source: String?,
+  val source: LocationRecordSource?,
   /**
    * Timestamp (as an ISO 8601 string) of the record.
    */
@@ -89,6 +89,43 @@ data class LocationRecord(
    */
   val verticalAccuracy: Int?,
 )
+
+/**
+ * Represents the source (technology) that provided the location information for this record.
+ * Common values are: `WIFI`, `CELL`, `GPS`, `UNKNOWN` (note: sometimes found in lowercase).
+ * Example: "WIFI"
+ */
+enum class LocationRecordSource {
+  /**
+   * Indicates the location information was provided by WIFI.
+   */
+  WIFI,
+
+  /**
+   * Indicates the location information was provided by CELL.
+   */
+  CELL,
+
+  /**
+   * Indicates the location information was provided by GPS.
+   */
+  GPS,
+
+  /**
+   * Indicates the location information was provided by visiting location (e.g. on arrival).
+   */
+  VISIT_ARRIVAL,
+
+  /**
+   * Indicates the location information was provided by visiting location (e.g. on departure).
+   */
+  VISIT_DEPARTURE,
+
+  /**
+   * Indicates the location information was provided by UNKNOWN.
+   */
+  UNKNOWN,
+}
 
 /**
  * Information about the access points found in a Wi-Fi scan done by the device.

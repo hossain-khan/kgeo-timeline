@@ -11,4 +11,22 @@ fun main() {
 
   println("Got records: ${records.locations.size} records.")
   println()
+
+  parseSemanticRecords()
+}
+
+fun parseSemanticRecords() {
+  val parser = Parser()
+
+  val directory = File("sample/src/main/resources/Location_History/2022/")
+  val files = directory.listFiles()
+  files?.forEach {
+    // List each files of directory
+    println("Parsing file: ${it.name}")
+
+    val jsonText: String = it.readText()
+    val semanticTimeline = parser.parseSemanticTimeline(jsonText)
+
+    println("Got timeline items: ${semanticTimeline.timelineObjects.size}")
+  }
 }
