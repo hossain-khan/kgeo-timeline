@@ -561,7 +561,6 @@ enum class LocationSource {
  * Example: "INFERRED"
  */
 enum class DataSource {
-
   /**
    * Indicates the location data of the path is backfilled.
    */
@@ -575,7 +574,7 @@ enum class DataSource {
   /**
    * Indicates the location data of the path is resnapped for edit.
    */
-  RESNAPPED_FOR_EDIT
+  RESNAPPED_FOR_EDIT,
 }
 
 /**

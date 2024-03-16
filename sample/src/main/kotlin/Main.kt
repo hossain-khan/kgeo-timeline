@@ -18,7 +18,7 @@ fun main() {
 fun parseSemanticRecords() {
   val parser = Parser()
 
-  val directory = File("sample/src/main/resources/Location_History/2015/")
+  val directory = File("sample/src/main/resources/Location_History/2022/")
   val files = directory.listFiles()
   files?.forEach {
     // List each files of directory
