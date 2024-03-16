@@ -56,13 +56,14 @@ data class ActivitySegment(
   @Json(name = "activityType")
   val activityType: String?,
   /**
-   * List of all the considered candidate activity types and their probabilities. The sum of all the probabilities is always <= 100.
-   * Example: [Activity(activityType = "IN_BUS", probability = 85.6847882270813), Activity(activityType = "WALKING", probability = 8.418431878089905)]
+   * List of all the considered candidate activity types and their probabilities.
+   * The sum of all the probabilities is always <= 100.
    */
   @Json(name = "activities")
   val activities: List<Activity> = emptyList(),
   /**
-   * Confidence that the chosen activity type is correct. One of: `LOW`, `MEDIUM`, `HIGH` or `UNKNOWN_CONFIDENCE`. Activities that have been manually confirmed always have a confidence of `HIGH`.
+   * Confidence that the chosen activity type is correct. One of: `LOW`, `MEDIUM`, `HIGH` or `UNKNOWN_CONFIDENCE`.
+   * Activities that have been manually confirmed always have a confidence of `HIGH`.
    * Example: "HIGH"
    */
   @Json(name = "confidence")
@@ -74,7 +75,6 @@ data class ActivitySegment(
   val simplifiedRawPath: SimplifiedRawPath?,
   /**
    * Path taken in a public transit system, such as a bus or a metro.
-   * Example: TransitPath(transitStops = [TransitStop(latitudeE7 = 414083140, longitudeE7 = 21704000, placeId = "ChIJWey1zMWipBIRiNQSzpI4EDQ", address = "08025 Barcelona\nEspaña", name = "Sant Antoni Maria Claret-Lepant")], name = "H8", hexRgbColor = "009EE0", linePlaceId = "ChIJQVEUoLuipBIRJO37wI4yyBs", stopTimesInfo = [StopTimeInfo(scheduledDepartureTimestamp = "2022-03-03T12:42:00Z", realtimeDepartureTimestamp = "2022-03-03T12:43:37Z")], source = "INFERRED", confidence = 0.9155850640140931, distanceMeters = 2341.0)
    */
   @Json(name = "transitPath")
   val transitPath: TransitPath?,
@@ -273,26 +273,28 @@ data class PlaceVisit(
   @Json(name = "location")
   val location: Location,
   /**
-   * Latitude coordinate of the location. Degrees multiplied by 10^7 and rounded to the nearest integer, in the range -900000000 to +900000000 (divide value by 10^7 for the usual range -90° to +90°).
+   * Latitude coordinate of the location. Degrees multiplied by 10^7 and rounded to the nearest integer,
+   * in the range -900000000 to +900000000 (divide value by 10^7 for the usual range -90° to +90°).
    * Example: 414216106
    */
   @Json(name = "centerLatE7")
   val centerLatE7: Int?,
   /**
-   * Longitude coordinate of the location. Degrees multiplied by 10^7 and rounded to the nearest integer, in the range -1800000000 to +1800000000 (divide value by 10^7 for the usual range -180° to +180°).
+   * Longitude coordinate of the location. Degrees multiplied by 10^7 and rounded to the nearest integer,
+   * in the range -1800000000 to +1800000000 (divide value by 10^7 for the usual range -180° to +180°).
    * Example: 21684775
    */
   @Json(name = "centerLngE7")
   val centerLngE7: Int?,
   /**
    * Duration of the place visit
-   * Example: Duration(startTimestamp = "2022-03-06T14:13:11.092Z", endTimestamp = "2022-03-06T15:13:11.092Z")
    */
   @Json(name = "duration")
   val duration: Duration?,
   /**
-   * Categorized confidence for this place visit. One of: `LOW_CONFIDENCE`, `MEDIUM_CONFIDENCE`, `HIGH_CONFIDENCE` or `USER_CONFIRMED`.
-   * Example: "HIGH"
+   * Categorized confidence for this place visit.
+   * One of: `LOW_CONFIDENCE`, `MEDIUM_CONFIDENCE`, `HIGH_CONFIDENCE` or `USER_CONFIRMED`.
+   * Example: "HIGH_CONFIDENCE"
    */
   @Json(name = "placeConfidence")
   val placeConfidence: String?,
@@ -310,13 +312,11 @@ data class PlaceVisit(
   val locationConfidence: Int?,
   /**
    * Other candidate locations for this place visit
-   * Example: [Location(latitudeE7 = 414216106, longitudeE7 = 21684775, placeId = "ChIJk_s92NyipBIRUMnDG8Kq2Js")]
    */
   @Json(name = "otherCandidateLocations")
   val otherCandidateLocations: List<Location> = emptyList(),
   /**
    * Child visits for this place visit
-   * Example: [PlaceVisit(location = Location(latitudeE7 = 414216106, longitudeE7 = 21684775, placeId = "ChIJk_s92NyipBIRUMnDG8Kq2Js"), centerLatE7 = 414216106, centerLngE7 = 21684775, duration = Duration(startTimestamp = "2022-03-06T14:13:11.092Z", endTimestamp = "2022-03-06T15:13:11.092Z"), placeConfidence = "HIGH", visitConfidence = 95, locationConfidence = 71, otherCandidateLocations = [Location(latitudeE7 = 414216106, longitudeE7 = 21684775, placeId = "ChIJk_s92NyipBIRUMnDG8Kq2Js")])]
    */
   @Json(name = "childVisits")
   val childVisits: List<PlaceVisit>?,
@@ -332,7 +332,7 @@ data class PlaceVisit(
   @Json(name = "simplifiedRawPath")
   val simplifiedRawPath: SimplifiedRawPath?,
   /**
-   * Level (depth) of this place visit. This value increases by 1 with each recursive access to a [#/$defs/placeVisit/properties/childVisits] entry.
+   * Level (depth) of this place visit. This value increases by 1 with each recursive access to a `childVisits` entry.
    * Example: 1
    */
   @Json(name = "placeVisitLevel")
@@ -354,7 +354,7 @@ data class PlaceVisit(
    * Example: "2022-03-06T14:13:11.092Z"
    */
   @Json(name = "lastEditedTimestamp")
-  val lastEditedTimestamp: String?,
+  val lastEditedTimestamp: ZonedDateTime?,
   /**
    * Place Visit Type for this place visit. Can be `SINGLE_PLACE`.
    * Example: "SINGLE_PLACE"
@@ -479,13 +479,13 @@ data class StopTimeInfo(
    * Example: "2022-03-03T12:42:00Z"
    */
   @Json(name = "scheduledDepartureTimestamp")
-  val scheduledDepartureTimestamp: String,
+  val scheduledDepartureTimestamp: ZonedDateTime,
   /**
    * Real-time departure timestamp.
    * Example: "2022-03-03T12:43:37Z"
    */
   @Json(name = "realtimeDepartureTimestamp")
-  val realtimeDepartureTimestamp: String,
+  val realtimeDepartureTimestamp: ZonedDateTime,
 )
 
 /**
@@ -654,22 +654,29 @@ data class Checkin(
 @JsonClass(generateAdapter = true)
 data class Point(
   /**
-   * Latitude coordinate of the point. Degrees multiplied by 10^7 and rounded to the nearest integer, in the range -900000000 to +900000000 (divide value by 10^7 for the usual range -90° to +90°). Example: 414216106
+   * Latitude coordinate of the point. Degrees multiplied by 10^7 and rounded to the nearest integer,
+   * in the range -900000000 to +900000000 (divide value by 10^7 for the usual range -90° to +90°).
+   * Example: 414216106
    */
   @Json(name = "latE7")
   val latE7: Int,
   /**
-   * Longitude coordinate of the point. Degrees multiplied by 10^7 and rounded to the nearest integer, in the range -1800000000 to +1800000000 (divide value by 10^7 for the usual range -180° to +180°). Example: 21684775
+   * Longitude coordinate of the point. Degrees multiplied by 10^7 and rounded to the nearest integer,
+   * in the range -1800000000 to +1800000000 (divide value by 10^7 for the usual range -180° to +180°).
+   * Example: -793718490
    */
   @Json(name = "lngE7")
   val lngE7: Int,
   /**
-   * Approximate accuracy radius of the location measurement, in meters. A lower value means better precision. Example: 10
+   * Approximate accuracy radius of the location measurement, in meters.
+   * A lower value means better precision.
+   * Example: 10
    */
   @Json(name = "accuracyMeters")
   val accuracyMeters: Int,
   /**
-   * Timestamp of the point. Example: "2022-03-03T08:27:48Z"
+   * Timestamp of the point.
+   * Example: "2022-03-03T08:27:48Z"
    */
   @Json(name = "timestamp")
   val timestamp: ZonedDateTime,
@@ -679,7 +686,6 @@ data class Point(
 data class WaypointPath(
   /**
    * Waypoints of the path
-   * Example: [Waypoint(latE7 = 416119834, lngE7 = 21768624), Waypoint(latE7 = 416117012, lngE7 = 21899302), Waypoint(latE7 = 416119262, lngE7 = 21802315)]
    */
   @Json(name = "waypoints")
   val waypoints: List<Waypoint>,
@@ -709,7 +715,6 @@ data class WaypointPath(
   val confidence: Double?,
   /**
    * Road segments of the path.
-   * Example: [RoadSegment(duration = "8s", placeId = "ChIJk_s92NyipBIRUMnDG8Kq2Js")]
    */
   @Json(name = "roadSegment")
   val roadSegment: List<RoadSegment> = emptyList(),
@@ -737,12 +742,16 @@ data class RoadSegment(
 @JsonClass(generateAdapter = true)
 data class Waypoint(
   /**
-   * Latitude coordinate of the waypoint. Degrees multiplied by 10^7 and rounded to the nearest integer, in the range -900000000 to +900000000 (divide value by 10^7 for the usual range -90° to +90°). Example: 414216106
+   * Latitude coordinate of the waypoint. Degrees multiplied by 10^7 and rounded to the nearest integer,
+   * in the range -900000000 to +900000000 (divide value by 10^7 for the usual range -90° to +90°).
+   * Example: 414216106
    */
   @Json(name = "latE7")
   val latE7: Int,
   /**
-   * Longitude coordinate of the waypoint. Degrees multiplied by 10^7 and rounded to the nearest integer, in the range -1800000000 to +1800000000 (divide value by 10^7 for the usual range -180° to +180°). Example: 21684775
+   * Longitude coordinate of the waypoint. Degrees multiplied by 10^7 and rounded to the nearest integer,
+   * in the range -1800000000 to +1800000000 (divide value by 10^7 for the usual range -180° to +180°).
+   * Example: -793718490
    */
   @Json(name = "lngE7")
   val lngE7: Int,
