@@ -96,7 +96,6 @@ data class LocationRecord(
  * Example: "WIFI"
  */
 enum class LocationRecordSource {
-
   /**
    * Indicates the location information was provided by WIFI.
    */
@@ -111,6 +110,16 @@ enum class LocationRecordSource {
    * Indicates the location information was provided by GPS.
    */
   GPS,
+
+  /**
+   * Indicates the location information was provided by visiting location (e.g. on arrival).
+   */
+  VISIT_ARRIVAL,
+
+  /**
+   * Indicates the location information was provided by visiting location (e.g. on departure).
+   */
+  VISIT_DEPARTURE,
 
   /**
    * Indicates the location information was provided by UNKNOWN.
