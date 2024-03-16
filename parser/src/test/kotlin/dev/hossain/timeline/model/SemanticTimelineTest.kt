@@ -44,8 +44,8 @@ class SemanticTimelineTest {
     assertThat(placeVisit.childVisits).isNull()
     assertThat(placeVisit.sectionId).isNull()
 
-    assertThat(placeVisit.duration.startTimestamp.toString()).isEqualTo("2021-08-01T01:22:24Z")
-    assertThat(placeVisit.duration.endTimestamp.toString()).isEqualTo("2021-08-01T01:25:36Z")
+    assertThat(placeVisit.duration!!.startTimestamp.toString()).isEqualTo("2021-08-01T01:22:24Z")
+    assertThat(placeVisit.duration!!.endTimestamp.toString()).isEqualTo("2021-08-01T01:25:36Z")
     assertThat(placeVisit.placeConfidence).isEqualTo("HIGH_CONFIDENCE")
   }
 

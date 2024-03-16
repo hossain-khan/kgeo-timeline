@@ -31,7 +31,7 @@ class RecordsTestCopilot {
         locationMetadata = listOf(),
         longitudeE7 = 1800000000,
         platformType = "ANDROID",
-        source = "GPS",
+        source = LocationRecordSource.GPS,
         timestamp = "2022-01-01T00:00:00Z",
         velocity = 10,
         verticalAccuracy = 10,
@@ -50,7 +50,7 @@ class RecordsTestCopilot {
     assertTrue(locationRecord.locationMetadata!!.isEmpty())
     assertEquals(1800000000, locationRecord.longitudeE7)
     assertEquals("ANDROID", locationRecord.platformType)
-    assertEquals("GPS", locationRecord.source)
+    assertEquals(LocationRecordSource.GPS, locationRecord.source)
     assertEquals("2022-01-01T00:00:00Z", locationRecord.timestamp)
     assertEquals(10, locationRecord.velocity)
     assertEquals(10, locationRecord.verticalAccuracy)
