@@ -54,7 +54,7 @@ data class ActivitySegment(
    * Example: "IN_BUS"
    */
   @Json(name = "activityType")
-  val activityType: String,
+  val activityType: String?,
   /**
    * List of all the considered candidate activity types and their probabilities. The sum of all the probabilities is always <= 100.
    * Example: [Activity(activityType = "IN_BUS", probability = 85.6847882270813), Activity(activityType = "WALKING", probability = 8.418431878089905)]
@@ -66,7 +66,7 @@ data class ActivitySegment(
    * Example: "HIGH"
    */
   @Json(name = "confidence")
-  val confidence: String,
+  val confidence: String?,
   @Json(name = "waypointPath")
   val waypointPath: WaypointPath?,
   /** The simplified raw path of the activity */
@@ -142,12 +142,12 @@ data class Location(
    * Latitude coordinate of the location. Degrees multiplied by 10^7 and rounded to the nearest integer.
    * Example: 414216106
    */
-  @Json(name = "latitudeE7") val latitudeE7: Int,
+  @Json(name = "latitudeE7") val latitudeE7: Int?,
   /**
    * Longitude coordinate of the location. Degrees multiplied by 10^7 and rounded to the nearest integer.
    * Example: 21684775
    */
-  @Json(name = "longitudeE7") val longitudeE7: Int,
+  @Json(name = "longitudeE7") val longitudeE7: Int?,
   /**
    * Google Maps Place ID of the location.
    * Example: "ChIJk_s92NyipBIRUMnDG8Kq2Js"
@@ -236,6 +236,13 @@ enum class SemanticType(val title: String, val description: String, val extraCol
     "The place has been given a private label by the user.",
     "#03a9f4",
   ),
+
+  @Json(name = "TYPE_UNKNOWN")
+  TYPE_UNKNOWN(
+    "Type Unknown",
+    "The place has not been categorized.",
+    "#03a9f4",
+  ),
 }
 
 /**
@@ -270,43 +277,43 @@ data class PlaceVisit(
    * Example: 414216106
    */
   @Json(name = "centerLatE7")
-  val centerLatE7: Int,
+  val centerLatE7: Int?,
   /**
    * Longitude coordinate of the location. Degrees multiplied by 10^7 and rounded to the nearest integer, in the range -1800000000 to +1800000000 (divide value by 10^7 for the usual range -180° to +180°).
    * Example: 21684775
    */
   @Json(name = "centerLngE7")
-  val centerLngE7: Int,
+  val centerLngE7: Int?,
   /**
    * Duration of the place visit
    * Example: Duration(startTimestamp = "2022-03-06T14:13:11.092Z", endTimestamp = "2022-03-06T15:13:11.092Z")
    */
   @Json(name = "duration")
-  val duration: Duration,
+  val duration: Duration?,
   /**
    * Categorized confidence for this place visit. One of: `LOW_CONFIDENCE`, `MEDIUM_CONFIDENCE`, `HIGH_CONFIDENCE` or `USER_CONFIRMED`.
    * Example: "HIGH"
    */
   @Json(name = "placeConfidence")
-  val placeConfidence: String,
+  val placeConfidence: String?,
   /**
    * Visit confidence for this place visit
    * Example: 95
    */
   @Json(name = "visitConfidence")
-  val visitConfidence: Int,
+  val visitConfidence: Int?,
   /**
    * Location confidence for this place visit
    * Example: 71
    */
   @Json(name = "locationConfidence")
-  val locationConfidence: Int,
+  val locationConfidence: Int?,
   /**
    * Other candidate locations for this place visit
    * Example: [Location(latitudeE7 = 414216106, longitudeE7 = 21684775, placeId = "ChIJk_s92NyipBIRUMnDG8Kq2Js")]
    */
   @Json(name = "otherCandidateLocations")
-  val otherCandidateLocations: List<Location>,
+  val otherCandidateLocations: List<Location> = emptyList(),
   /**
    * Child visits for this place visit
    * Example: [PlaceVisit(location = Location(latitudeE7 = 414216106, longitudeE7 = 21684775, placeId = "ChIJk_s92NyipBIRUMnDG8Kq2Js"), centerLatE7 = 414216106, centerLngE7 = 21684775, duration = Duration(startTimestamp = "2022-03-06T14:13:11.092Z", endTimestamp = "2022-03-06T15:13:11.092Z"), placeConfidence = "HIGH", visitConfidence = 95, locationConfidence = 71, otherCandidateLocations = [Location(latitudeE7 = 414216106, longitudeE7 = 21684775, placeId = "ChIJk_s92NyipBIRUMnDG8Kq2Js")])]
@@ -353,7 +360,7 @@ data class PlaceVisit(
    * Example: "SINGLE_PLACE"
    */
   @Json(name = "placeVisitType")
-  val placeVisitType: String,
+  val placeVisitType: String?,
   /**
    * Place Visit Importance for this place visit. One of `MAIN` or `TRANSITIONAL`.
    * Example: "MAIN"
@@ -439,30 +446,30 @@ data class TransitPath(
    * Example: "ChIJQVEUoLuipBIRJO37wI4yyBs"
    */
   @Json(name = "linePlaceId")
-  val linePlaceId: String,
+  val linePlaceId: String?,
   /**
    * Time information (departure and arrival times, both real and scheduled) for each transit stop used.
    */
   @Json(name = "stopTimesInfo")
-  val stopTimesInfo: List<StopTimeInfo>,
+  val stopTimesInfo: List<StopTimeInfo> = emptyList(),
   /**
    * Source of the location data of the transit path. Either `BACKFILLED` or `INFERRED`.
    * Example: "INFERRED"
    */
   @Json(name = "source")
-  val source: String,
+  val source: String?,
   /**
    * Confidence level of the transit path data. Ranges from 0 to 1.
    * Example: 0.9155850640140931
    */
   @Json(name = "confidence")
-  val confidence: Double,
+  val confidence: Double?,
   /**
    * Distance traveled with the transit path, in meters.
    * Example: 2341.0
    */
   @Json(name = "distanceMeters")
-  val distanceMeters: Double,
+  val distanceMeters: Double?,
 )
 
 @JsonClass(generateAdapter = true)
@@ -614,10 +621,10 @@ data class OriginalCandidates(
 data class Checkin(
   /** The timestamp of the checkin */
   @Json(name = "timestamp")
-  val timestamp: String,
+  val timestamp: String?,
   /** The place ID of the checkin */
   @Json(name = "placeId")
-  val placeId: String,
+  val placeId: String?,
 )
 
 /**
@@ -660,25 +667,25 @@ data class WaypointPath(
    * Example: "INFERRED"
    */
   @Json(name = "source")
-  val source: String,
+  val source: String?,
   /**
    * Total distance of the path, in meters.
    * Example: 396.34176716755843
    */
   @Json(name = "distanceMeters")
-  val distanceMeters: Double,
+  val distanceMeters: Double?,
   /**
    * Travel mode of the path. Can be `WALK`, `DRIVE`, or `BICYCLE`.
    * Example: "WALK"
    */
   @Json(name = "travelMode")
-  val travelMode: String,
+  val travelMode: String?,
   /**
    * Confidence of the path.
    * Example: 0.7986568220419046
    */
   @Json(name = "confidence")
-  val confidence: Double,
+  val confidence: Double?,
   /**
    * Road segments of the path.
    * Example: [RoadSegment(duration = "8s", placeId = "ChIJk_s92NyipBIRUMnDG8Kq2Js")]
@@ -694,7 +701,7 @@ data class RoadSegment(
    * Example: "8s"
    */
   @Json(name = "duration")
-  val duration: String,
+  val duration: String?,
   /**
    * Google Maps Place ID of the location.
    * Example: "ChIJk_s92NyipBIRUMnDG8Kq2Js"
