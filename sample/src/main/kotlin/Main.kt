@@ -1,18 +1,26 @@
 package dev.hossain.timeline
 
+import okio.BufferedSource
+import okio.buffer
+import okio.source
+import java.io.BufferedReader
 import java.io.File
 
 fun main() {
   println("Sample app for timeline project.")
+  parseRecords()
+  parseSemanticRecords()
+}
+
+private fun parseRecords() {
   val parser = Parser()
   // load "Records.json" file
-  val recordsJson = parser::class.java.classLoader.getResource("Records.json")?.readText()!!
-  val records = parser.parseRecords(recordsJson)
+  val recordsFile = File("sample/src/main/resources/Records.json")
+  val buffer: BufferedSource = recordsFile.source().buffer()
+  val records = parser.parseRecords(buffer)
 
   println("Got records: ${records.locations.size} records.")
   println()
-
-  parseSemanticRecords()
 }
 
 fun parseSemanticRecords() {
