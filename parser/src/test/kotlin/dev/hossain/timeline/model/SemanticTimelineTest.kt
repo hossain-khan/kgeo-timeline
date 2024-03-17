@@ -23,8 +23,8 @@ class SemanticTimelineTest {
 
     val activitySegment = timeline.timelineObjects.first().activitySegment!!
     assertThat(activitySegment.activityType).isEqualTo("IN_PASSENGER_VEHICLE")
-    assertThat(activitySegment.startLocation.latitudeE7).isEqualTo(436996461)
-    assertThat(activitySegment.startLocation.longitudeE7).isEqualTo(-798555542)
+    assertThat(activitySegment.startLocation!!.latitudeE7).isEqualTo(436996461)
+    assertThat(activitySegment.startLocation!!.longitudeE7).isEqualTo(-798555542)
     assertThat(activitySegment.activities).hasSize(15)
     assertThat(activitySegment.confidence).isEqualTo("HIGH")
   }
