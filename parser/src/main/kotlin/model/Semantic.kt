@@ -31,18 +31,18 @@ data class ActivitySegment(
    * Start location of the activity.
    */
   @Json(name = "startLocation")
-  val startLocation: Location,
+  val startLocation: Location?,
   /**
    * End location of the activity.
    */
   @Json(name = "endLocation")
-  val endLocation: Location,
+  val endLocation: Location?,
   /**
    * Duration of the activity.
    * Example: Duration(startTimestamp = "2022-03-03T12:22:24Z", endTimestamp = "2022-03-03T12:43:34Z")
    */
   @Json(name = "duration")
-  val duration: Duration,
+  val duration: Duration?,
   /**
    * Distance traveled during the activity, in meters.
    * Example: 2640
@@ -479,13 +479,13 @@ data class StopTimeInfo(
    * Example: "2022-03-03T12:42:00Z"
    */
   @Json(name = "scheduledDepartureTimestamp")
-  val scheduledDepartureTimestamp: ZonedDateTime,
+  val scheduledDepartureTimestamp: ZonedDateTime?,
   /**
    * Real-time departure timestamp.
    * Example: "2022-03-03T12:43:37Z"
    */
   @Json(name = "realtimeDepartureTimestamp")
-  val realtimeDepartureTimestamp: ZonedDateTime,
+  val realtimeDepartureTimestamp: ZonedDateTime?,
 )
 
 /**
@@ -586,12 +586,12 @@ data class EditActionMetadata(
    * Represents the activity segment.
    */
   @Json(name = "activitySegment")
-  val activitySegment: ActivitySegment,
+  val activitySegment: ActivitySegment?,
   /**
    * Represents the place visit segment.
    */
   @Json(name = "placeVisitSegment")
-  val placeVisitSegment: PlaceVisitSegment,
+  val placeVisitSegment: PlaceVisitSegment?,
   /**
    * Represents the edit history.
    */
@@ -601,13 +601,13 @@ data class EditActionMetadata(
    * Represents the original candidates.
    */
   @Json(name = "originalCandidates")
-  val originalCandidates: OriginalCandidates,
+  val originalCandidates: OriginalCandidates?,
 )
 
 @JsonClass(generateAdapter = true)
 data class PlaceVisitSegment(
   @Json(name = "location")
-  val location: Location,
+  val location: Location?,
 )
 
 @JsonClass(generateAdapter = true)
@@ -619,17 +619,17 @@ data class EditHistory(
 @JsonClass(generateAdapter = true)
 data class EditEvent(
   @Json(name = "editOperation")
-  val editOperation: List<String>,
+  val editOperation: List<String> = emptyList(),
   @Json(name = "uiConfiguration")
-  val uiConfiguration: UIConfiguration,
+  val uiConfiguration: UIConfiguration?,
 )
 
 @JsonClass(generateAdapter = true)
 data class UIConfiguration(
   @Json(name = "uiActivitySegmentConfiguration")
-  val uiActivitySegmentConfiguration: String,
+  val uiActivitySegmentConfiguration: String?,
   @Json(name = "uiPlaceVisitConfiguration")
-  val uiPlaceVisitConfiguration: String,
+  val uiPlaceVisitConfiguration: String?,
 )
 
 @JsonClass(generateAdapter = true)

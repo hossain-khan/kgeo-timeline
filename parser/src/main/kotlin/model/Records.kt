@@ -25,7 +25,7 @@ data class LocationRecord(
    * Approximate accuracy radius of the location measurement, in meters.
    * A lower value means better precision.
    */
-  val accuracy: Int,
+  val accuracy: Int?,
   /**
    * Information about the access points found in a Wi-Fi scan done by the device
    * and associated with this location record.
@@ -52,7 +52,7 @@ data class LocationRecord(
    * Integer identifier (specific to Location History) associated with the device that uploaded the location.
    * Refer to `deviceSettings` in Settings.json for information about the device with this `deviceTag`.
    */
-  val deviceTag: Int,
+  val deviceTag: Int?,
   /**
    * The version of the device's operating system that provided this record.
    * In Android devices, this corresponds to the API Level (e.g. 28 is Android 9 *Pie*).
