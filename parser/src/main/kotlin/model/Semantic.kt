@@ -402,7 +402,7 @@ enum class PlaceConfidence {
   /**
    * Represents user confirmed confidence.
    */
-  USER_CONFIRMED
+  USER_CONFIRMED,
 }
 
 /**
@@ -418,7 +418,7 @@ enum class PlaceVisitImportance {
   /**
    * Represents transitional importance.
    */
-  TRANSITIONAL
+  TRANSITIONAL,
 }
 
 /**
@@ -434,7 +434,7 @@ enum class LocationAssertionType {
   /**
    * Represents WITHIN_OR_AT.
    */
-  WITHIN_OR_AT
+  WITHIN_OR_AT,
 }
 
 /**
