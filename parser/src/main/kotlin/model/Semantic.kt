@@ -297,7 +297,7 @@ data class PlaceVisit(
    * Example: "HIGH_CONFIDENCE"
    */
   @Json(name = "placeConfidence")
-  val placeConfidence: String?,
+  val placeConfidence: PlaceConfidence?,
   /**
    * Visit confidence for this place visit
    * Example: 95
@@ -379,6 +379,31 @@ data class PlaceVisit(
   @Json(name = "checkin")
   val checkin: Checkin?,
 )
+
+/**
+ * Categorized confidence for this place visit. One of: `LOW_CONFIDENCE`, `MEDIUM_CONFIDENCE`, `HIGH_CONFIDENCE` or `USER_CONFIRMED`.
+ */
+enum class PlaceConfidence {
+  /**
+   * Represents low confidence.
+   */
+  LOW_CONFIDENCE,
+
+  /**
+   * Represents medium confidence.
+   */
+  MEDIUM_CONFIDENCE,
+
+  /**
+   * Represents high confidence.
+   */
+  HIGH_CONFIDENCE,
+
+  /**
+   * Represents user confirmed confidence.
+   */
+  USER_CONFIRMED
+}
 
 /**
  * Represents a duration of time defined by a start timestamp and an end timestamp.
