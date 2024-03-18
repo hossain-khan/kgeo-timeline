@@ -610,7 +610,7 @@ enum class ParkingMethod {
   /**
    * Represents undefined parking method.
    */
-  UNDEFINED
+  UNDEFINED,
 }
 
 enum class LocationSource {
@@ -805,7 +805,7 @@ enum class TravelMode {
   /**
    * Represents bicycle mode.
    */
-  BICYCLE
+  BICYCLE,
 }
 
 @JsonClass(generateAdapter = true)

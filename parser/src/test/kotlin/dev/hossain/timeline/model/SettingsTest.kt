@@ -20,5 +20,26 @@ class SettingsTest {
     assertThat(settings.hasSetRetention).isFalse()
     assertThat(settings.historyEnabled).isNull()
     assertThat(settings.hasReportedLocations).isTrue()
+    assertThat(settings.modifiedTime).isEqualTo("2023-07-06T20:07:56.405Z")
+    assertThat(settings.retentionWindowDays).isNull()
+    val deviceSettings = settings.deviceSettings.first()
+    assertThat(deviceSettings.deviceTag).isEqualTo(279958700)
+    assertThat(deviceSettings.legalCountryCode).isNull()
+    assertThat(deviceSettings.reportingEnabled).isTrue()
+    assertThat(
+      deviceSettings.deviceSpec,
+    ).isEqualTo(
+      DeviceSpec(
+        manufacturer = "samsung",
+        brand = "samsung",
+        product = "dm1qcsx",
+        device = "dm1q",
+        model = "SM-S911W",
+        isLowRam = false,
+      ),
+    )
+    assertThat(deviceSettings.androidOsLevel).isEqualTo(34)
+    assertThat(deviceSettings.devicePrettyName).isEqualTo("SM-S911W")
+    assertThat(deviceSettings.platformType).isEqualTo("ANDROID")
   }
 }
