@@ -372,7 +372,7 @@ data class PlaceVisit(
    * Example: "AREA"
    */
   @Json(name = "locationAssertionType")
-  val locationAssertionType: String?,
+  val locationAssertionType: LocationAssertionType?,
   /**
    * Checkin for this place visit
    */
@@ -419,6 +419,22 @@ enum class PlaceVisitImportance {
    * Represents transitional importance.
    */
   TRANSITIONAL
+}
+
+/**
+ * Location Assertion Type.
+ * One of `AREA` or `WITHIN_OR_AT`.
+ */
+enum class LocationAssertionType {
+  /**
+   * Represents AREA.
+   */
+  AREA,
+
+  /**
+   * Represents WITHIN_OR_AT.
+   */
+  WITHIN_OR_AT
 }
 
 /**
