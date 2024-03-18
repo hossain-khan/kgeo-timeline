@@ -573,7 +573,7 @@ data class ParkingEvent(
    * Example: "EXITING_VEHICLE_SIGNAL"
    */
   @Json(name = "method")
-  val method: Method,
+  val method: ParkingMethod,
   /**
    * Source of the location data.
    * Example: "FROM_RAW_LOCATION"
@@ -588,18 +588,29 @@ data class ParkingEvent(
   val timestamp: ZonedDateTime,
 )
 
-enum class Method {
-  @Json(name = "PERSONAL_VEHICLE_CONFIDENCE")
+/**
+ * Parking Method.
+ */
+enum class ParkingMethod {
+  /**
+   * Represents personal vehicle confidence.
+   */
   PERSONAL_VEHICLE_CONFIDENCE,
 
-  @Json(name = "END_OF_ACTIVITY_SEGMENT")
+  /**
+   * Represents end of activity segment.
+   */
   END_OF_ACTIVITY_SEGMENT,
 
-  @Json(name = "EXITING_VEHICLE_SIGNAL")
+  /**
+   * Represents exiting vehicle signal.
+   */
   EXITING_VEHICLE_SIGNAL,
 
-  @Json(name = "UNDEFINED")
-  UNDEFINED,
+  /**
+   * Represents undefined parking method.
+   */
+  UNDEFINED
 }
 
 enum class LocationSource {
@@ -763,7 +774,7 @@ data class WaypointPath(
    * Example: "WALK"
    */
   @Json(name = "travelMode")
-  val travelMode: String?,
+  val travelMode: TravelMode?,
   /**
    * Confidence of the path.
    * Example: 0.7986568220419046
@@ -776,6 +787,26 @@ data class WaypointPath(
   @Json(name = "roadSegment")
   val roadSegment: List<RoadSegment> = emptyList(),
 )
+
+/**
+ * Travel Mode.
+ */
+enum class TravelMode {
+  /**
+   * Represents walking mode.
+   */
+  WALK,
+
+  /**
+   * Represents driving mode.
+   */
+  DRIVE,
+
+  /**
+   * Represents bicycle mode.
+   */
+  BICYCLE
+}
 
 @JsonClass(generateAdapter = true)
 data class RoadSegment(
