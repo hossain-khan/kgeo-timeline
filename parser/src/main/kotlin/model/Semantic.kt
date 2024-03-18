@@ -366,7 +366,7 @@ data class PlaceVisit(
    * Example: "MAIN"
    */
   @Json(name = "placeVisitImportance")
-  val placeVisitImportance: String?,
+  val placeVisitImportance: PlaceVisitImportance?,
   /**
    * Location Assertion Type for this place visit
    * Example: "AREA"
@@ -403,6 +403,22 @@ enum class PlaceConfidence {
    * Represents user confirmed confidence.
    */
   USER_CONFIRMED
+}
+
+/**
+ * Place Visit Importance.
+ * One of `MAIN` or `TRANSITIONAL`.
+ */
+enum class PlaceVisitImportance {
+  /**
+   * Represents main importance.
+   */
+  MAIN,
+
+  /**
+   * Represents transitional importance.
+   */
+  TRANSITIONAL
 }
 
 /**
