@@ -297,7 +297,7 @@ data class PlaceVisit(
    * Example: "HIGH_CONFIDENCE"
    */
   @Json(name = "placeConfidence")
-  val placeConfidence: String?,
+  val placeConfidence: PlaceConfidence?,
   /**
    * Visit confidence for this place visit
    * Example: 95
@@ -366,19 +366,76 @@ data class PlaceVisit(
    * Example: "MAIN"
    */
   @Json(name = "placeVisitImportance")
-  val placeVisitImportance: String?,
+  val placeVisitImportance: PlaceVisitImportance?,
   /**
    * Location Assertion Type for this place visit
    * Example: "AREA"
    */
   @Json(name = "locationAssertionType")
-  val locationAssertionType: String?,
+  val locationAssertionType: LocationAssertionType?,
   /**
    * Checkin for this place visit
    */
   @Json(name = "checkin")
   val checkin: Checkin?,
 )
+
+/**
+ * Categorized confidence for this place visit. One of: `LOW_CONFIDENCE`, `MEDIUM_CONFIDENCE`, `HIGH_CONFIDENCE` or `USER_CONFIRMED`.
+ */
+enum class PlaceConfidence {
+  /**
+   * Represents low confidence.
+   */
+  LOW_CONFIDENCE,
+
+  /**
+   * Represents medium confidence.
+   */
+  MEDIUM_CONFIDENCE,
+
+  /**
+   * Represents high confidence.
+   */
+  HIGH_CONFIDENCE,
+
+  /**
+   * Represents user confirmed confidence.
+   */
+  USER_CONFIRMED,
+}
+
+/**
+ * Place Visit Importance.
+ * One of `MAIN` or `TRANSITIONAL`.
+ */
+enum class PlaceVisitImportance {
+  /**
+   * Represents main importance.
+   */
+  MAIN,
+
+  /**
+   * Represents transitional importance.
+   */
+  TRANSITIONAL,
+}
+
+/**
+ * Location Assertion Type.
+ * One of `AREA` or `WITHIN_OR_AT`.
+ */
+enum class LocationAssertionType {
+  /**
+   * Represents AREA.
+   */
+  AREA,
+
+  /**
+   * Represents WITHIN_OR_AT.
+   */
+  WITHIN_OR_AT,
+}
 
 /**
  * Represents a duration of time defined by a start timestamp and an end timestamp.

@@ -39,14 +39,14 @@ class SemanticTimelineTest {
     assertThat(placeVisit.location.address).isEqualTo("6 Rumbellow Cres, Ajax, ON L1T 0J9, Canada")
 
     assertThat(placeVisit.visitConfidence).isEqualTo(85)
-    assertThat(placeVisit.placeVisitImportance).isEqualTo("MAIN")
+    assertThat(placeVisit.placeVisitImportance).isEqualTo(PlaceVisitImportance.MAIN)
     assertThat(placeVisit.placeVisitLevel).isNull()
     assertThat(placeVisit.childVisits).isNull()
     assertThat(placeVisit.sectionId).isNull()
 
     assertThat(placeVisit.duration!!.startTimestamp.toString()).isEqualTo("2021-08-01T01:22:24Z")
     assertThat(placeVisit.duration!!.endTimestamp.toString()).isEqualTo("2021-08-01T01:25:36Z")
-    assertThat(placeVisit.placeConfidence).isEqualTo("HIGH_CONFIDENCE")
+    assertThat(placeVisit.placeConfidence).isEqualTo(PlaceConfidence.HIGH_CONFIDENCE)
   }
 
   /**
