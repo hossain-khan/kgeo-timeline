@@ -214,7 +214,7 @@ data class Activity(
   /**
    * Type of activity detected.
    */
-  val type: ActivityType = ActivityType.UNKNOWN_ACTIVITY_TYPE,
+  val type: ActivityType = ActivityType.UNKNOWN,
   /**
    * Value from 0 to 100 indicating the likelihood that the user is performing this activity.
    * The larger the value, the more consistent the data used to perform the classification is with the detected activity.
@@ -230,53 +230,20 @@ data class Activity(
 /**
  * Enum class for different types of activities detected by the device, used in [Activity.type].
  */
-enum class ActivityType(val title: String, val extraColor: String) {
-  BOATING("Boating", "#01579b"),
-  CATCHING_POKEMON("Catching Pokémon", "#db4437"),
-  CYCLING("Cycling", "#4db6ac"),
-  EXITING_VEHICLE("Exiting a vehicle", "#01579b"),
-  FLYING("Flying", "#3f51b5"),
-  HIKING("Hiking", "#c2185b"),
-  HORSEBACK_RIDING("Horseback riding", "#4db6ac"),
-  IN_BUS("On a bus", "#01579b"),
-  IN_CABLECAR("In a cable car", "#01579b"),
-  IN_CAR("In a car", "#01579b"),
-  IN_FERRY("On a ferry", "#01579b"),
-  IN_FOUR_WHEELER_VEHICLE("In a four wheeler vehicle", "#01579b"),
-  IN_FUNICULAR("On a funicular", "#01579b"),
-  IN_GONDOLA_LIFT("In a gondola lift", "#01579b"),
-  IN_PASSENGER_VEHICLE("Driving", "#01579b"),
-  IN_RAIL_VEHICLE("In a rail vehicle", "#01579b"),
-  IN_ROAD_VEHICLE("In a road vehicle", "#03a9f4"),
-  IN_SUBWAY("On the subway", "#01579b"),
-  IN_TAXI("In a taxi", "#01579b"),
-  IN_TRAIN("On a train", "#01579b"),
-  IN_TRAM("On a tram", "#01579b"),
-  IN_TWO_WHEELER_VEHICLE("On a two wheeler vehicle", "#01579b"),
-  IN_VEHICLE("In a vehicle", "#03a9f4"),
-  IN_WHEELCHAIR("By wheelchair", "#03a9f4"),
-  KAYAKING("Kayaking", "#4db6ac"),
-  KITESURFING("Kitesurfing", "#4db6ac"),
-  MOTORCYCLING("Motorcycling", "#01579b"),
-  ON_BICYCLE("On a bicycle", "#4db6ac"),
-  ON_FOOT("On foot", "#c2185b"),
-  PARAGLIDING("Paragliding", "#4db6ac"),
-  ROWING("Rowing", "#c2185b"),
-  RUNNING("Running", "#c2185b"),
-  SAILING("Sailing", "#4db6ac"),
-  SKATEBOARDING("Skateboarding", "#4db6ac"),
-  SKATING("Skating", "#4db6ac"),
-  SKIING("Skiing", "#4db6ac"),
-  SLEDDING("Sledding", "#4db6ac"),
-  SNOWBOARDING("Snowboarding", "#4db6ac"),
-  SNOWMOBILE("Snowmobiling", "#01579b"),
-  SNOWSHOEING("Snowshoeing", "#c2185b"),
-  STILL("Still", "#01579b"),
-  SURFING("Surfing", "#4db6ac"),
-  SWIMMING("Swimming", "#c2185b"),
-  TILTING("Tilting", "#01579b"),
-  UNKNOWN("Unknown", "#03a9f4"),
-  UNKNOWN_ACTIVITY_TYPE("Unknown Activity", "#03a9f4"),
-  WALKING("Walking", "#03a9f4"),
-  WALKING_NORDIC("Nordic walking", "#c2185b"),
+enum class ActivityType(val title: String) {
+  EXITING_VEHICLE("The device is exiting a vehicle."),
+  IN_BUS("The device is in a bus."),
+  IN_CAR("The device is in a car."),
+  IN_FOUR_WHEELER_VEHICLE("The device is in a four-wheeler vehicle."),
+  IN_RAIL_VEHICLE("The device is in a rail vehicle."),
+  IN_ROAD_VEHICLE("The device is in a road vehicle."),
+  IN_TWO_WHEELER_VEHICLE("The device is in a two-wheeler vehicle."),
+  IN_VEHICLE("The device is in a vehicle, such as a car."),
+  ON_BICYCLE("The device is on a bicycle."),
+  ON_FOOT("The device is on a user who is walking or running."),
+  RUNNING("The device is on a user who is running."),
+  STILL("The device is still (not moving)."),
+  TILTING("The device angle relative to gravity changed significantly. This often occurs when a device is picked up from a desk or a user who is sitting stands up."),
+  WALKING("The device is on a user who is walking."),
+  UNKNOWN("Unable to detect the current activity.")
 }
