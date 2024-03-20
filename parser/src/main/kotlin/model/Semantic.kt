@@ -67,7 +67,7 @@ data class ActivitySegment(
    * Example: "HIGH"
    */
   @Json(name = "confidence")
-  val confidence: String?,
+  val confidence: Confidence?,
   @Json(name = "waypointPath")
   val waypointPath: WaypointPath?,
   /** The simplified raw path of the activity */
@@ -885,4 +885,15 @@ enum class SemanticActivityType(val title: String) {
   UNKNOWN_ACTIVITY_TYPE("Unknown Activity"),
   WALKING("Walking"),
   WALKING_NORDIC("Nordic walking"),
+}
+
+/**
+ * Confidence that the chosen activity type is correct.
+ * Activities that have been manually confirmed always have a confidence of `HIGH`.
+ */
+enum class Confidence {
+  LOW,
+  MEDIUM,
+  HIGH,
+  UNKNOWN_CONFIDENCE
 }
