@@ -845,7 +845,6 @@ data class Waypoint(
   val lngE7: Int,
 )
 
-
 enum class SemanticActivityType(val title: String) {
   BOATING("Boating"),
   CATCHING_POKEMON("Catching Pokémon"),
@@ -895,5 +894,5 @@ enum class Confidence {
   LOW,
   MEDIUM,
   HIGH,
-  UNKNOWN_CONFIDENCE
+  UNKNOWN_CONFIDENCE,
 }

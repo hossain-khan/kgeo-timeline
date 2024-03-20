@@ -243,7 +243,10 @@ enum class ActivityType(val title: String) {
   ON_FOOT("The device is on a user who is walking or running."),
   RUNNING("The device is on a user who is running."),
   STILL("The device is still (not moving)."),
-  TILTING("The device angle relative to gravity changed significantly. This often occurs when a device is picked up from a desk or a user who is sitting stands up."),
+  TILTING(
+    "The device angle relative to gravity changed significantly. " +
+      "This often occurs when a device is picked up from a desk or a user who is sitting stands up.",
+  ),
   WALKING("The device is on a user who is walking."),
-  UNKNOWN("Unable to detect the current activity.")
+  UNKNOWN("Unable to detect the current activity."),
 }
