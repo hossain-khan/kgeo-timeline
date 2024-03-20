@@ -54,7 +54,7 @@ data class ActivitySegment(
    * Example: "IN_BUS"
    */
   @Json(name = "activityType")
-  val activityType: String?,
+  val activityType: SemanticActivityType?,
   /**
    * List of all the considered candidate activity types and their probabilities.
    * The sum of all the probabilities is always <= 100.
@@ -67,7 +67,7 @@ data class ActivitySegment(
    * Example: "HIGH"
    */
   @Json(name = "confidence")
-  val confidence: String?,
+  val confidence: Confidence?,
   @Json(name = "waypointPath")
   val waypointPath: WaypointPath?,
   /** The simplified raw path of the activity */
@@ -844,3 +844,55 @@ data class Waypoint(
   @Json(name = "lngE7")
   val lngE7: Int,
 )
+
+enum class SemanticActivityType(val title: String) {
+  BOATING("Boating"),
+  CATCHING_POKEMON("Catching Pokémon"),
+  CYCLING("Cycling"),
+  FLYING("Flying"),
+  HIKING("Hiking"),
+  HORSEBACK_RIDING("Horseback riding"),
+  IN_BUS("On a bus"),
+  IN_CABLECAR("In a cable car"),
+  IN_FERRY("On a ferry"),
+  IN_FUNICULAR("On a funicular"),
+  IN_GONDOLA_LIFT("In a gondola lift"),
+  IN_PASSENGER_VEHICLE("Driving"),
+  IN_SUBWAY("On the subway"),
+  IN_TAXI("In a taxi"),
+  IN_TRAIN("On a train"),
+  IN_TRAM("On a tram"),
+  IN_VEHICLE("In a vehicle"),
+  IN_WHEELCHAIR("By wheelchair"),
+  KAYAKING("Kayaking"),
+  KITESURFING("Kite surfing"),
+  MOTORCYCLING("Motorcycling"),
+  PARAGLIDING("Paragliding"),
+  ROWING("Rowing"),
+  RUNNING("Running"),
+  SAILING("Sailing"),
+  SKATEBOARDING("Skateboarding"),
+  SKATING("Skating"),
+  SKIING("Skiing"),
+  SLEDDING("Sledding"),
+  SNOWBOARDING("Snowboarding"),
+  SNOWMOBILE("Snowmobiling"),
+  SNOWSHOEING("Snowshoeing"),
+  STILL("Still"),
+  SURFING("Surfing"),
+  SWIMMING("Swimming"),
+  UNKNOWN_ACTIVITY_TYPE("Unknown Activity"),
+  WALKING("Walking"),
+  WALKING_NORDIC("Nordic walking"),
+}
+
+/**
+ * Confidence that the chosen activity type is correct.
+ * Activities that have been manually confirmed always have a confidence of `HIGH`.
+ */
+enum class Confidence {
+  LOW,
+  MEDIUM,
+  HIGH,
+  UNKNOWN_CONFIDENCE,
+}
