@@ -3,10 +3,11 @@ package dev.hossain.timeline.model
 import com.google.common.truth.Truth.assertThat
 import dev.hossain.timeline.Parser
 import dev.hossain.timeline.model.record.ActivityType
+import dev.hossain.timeline.model.record.Records
 import kotlin.test.Test
 
 /**
- * Test cases for [Settings].
+ * Test cases for [Records].
  */
 class RecordsTest {
   private val parser = Parser()
@@ -14,7 +15,7 @@ class RecordsTest {
   @Test
   fun `given records json should parse all records`() {
     val json = javaClass.getResourceAsStream("/records.json")!!.bufferedReader().readText()
-    val records = parser.parseRecords(json)
+    val records: Records = parser.parseRecords(json)
 
     assertThat(records.locations).hasSize(12)
   }
@@ -22,7 +23,7 @@ class RecordsTest {
   @Test
   fun `given first record should parse all fields`() {
     val json = javaClass.getResourceAsStream("/records.json")!!.bufferedReader().readText()
-    val records = parser.parseRecords(json)
+    val records: Records = parser.parseRecords(json)
 
     val firstRecord = records.locations.first()
     assertThat(firstRecord.timestamp).isEqualTo("2015-10-10T18:47:02.597Z")

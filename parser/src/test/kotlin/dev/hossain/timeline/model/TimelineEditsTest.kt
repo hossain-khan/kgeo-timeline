@@ -3,6 +3,7 @@ package dev.hossain.timeline.model
 import com.google.common.truth.Truth.assertThat
 import dev.hossain.timeline.Parser
 import dev.hossain.timeline.model.edits.Point
+import dev.hossain.timeline.model.edits.TimelineEdits
 import kotlin.test.Test
 
 class TimelineEditsTest {
@@ -11,7 +12,7 @@ class TimelineEditsTest {
   @Test
   fun `given timeline edits json should parse all timeline edits data`() {
     val json = javaClass.getResourceAsStream("/timeline-edits.json")!!.bufferedReader().readText()
-    val edits = parser.parseTimelineEdits(json)
+    val edits: TimelineEdits = parser.parseTimelineEdits(json)
 
     assertThat(edits.timelineEdits).hasSize(3)
   }
@@ -19,7 +20,7 @@ class TimelineEditsTest {
   @Test
   fun `given first timeline edit should parse all fields`() {
     val json = javaClass.getResourceAsStream("/timeline-edits.json")!!.bufferedReader().readText()
-    val edits = parser.parseTimelineEdits(json)
+    val edits: TimelineEdits = parser.parseTimelineEdits(json)
 
     val firstEdit = edits.timelineEdits.first()
     assertThat(firstEdit.deviceId).isEqualTo("0")
