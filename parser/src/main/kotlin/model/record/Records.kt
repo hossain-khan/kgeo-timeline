@@ -1,4 +1,4 @@
-package dev.hossain.timeline.model
+package dev.hossain.timeline.model.record
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass

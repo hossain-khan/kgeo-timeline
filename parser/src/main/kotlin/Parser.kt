@@ -5,8 +5,8 @@ import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.adapters.EnumJsonAdapter
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import dev.hossain.timeline.model.ActivityType
-import dev.hossain.timeline.model.Records
+import dev.hossain.timeline.model.record.ActivityType
+import dev.hossain.timeline.model.record.Records
 import dev.hossain.timeline.model.SemanticTimeline
 import dev.hossain.timeline.model.Settings
 import dev.hossain.timeline.model.timeline.TimelineEdits
