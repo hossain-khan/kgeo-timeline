@@ -5,11 +5,11 @@ import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.adapters.EnumJsonAdapter
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import dev.hossain.timeline.model.edits.TimelineEdits
 import dev.hossain.timeline.model.record.ActivityType
 import dev.hossain.timeline.model.record.Records
 import dev.hossain.timeline.model.semantic.SemanticTimeline
 import dev.hossain.timeline.model.settings.Settings
-import dev.hossain.timeline.model.edits.TimelineEdits
 import okio.BufferedSource
 
 /**
