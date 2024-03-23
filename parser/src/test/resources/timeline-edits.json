@@ -1,0 +1,162 @@
+{
+  "timelineEdits": [{
+    "deviceId": "0",
+    "placeAggregates": {
+      "placeAggregateInfo": [{
+        "score": 5.0,
+        "numBucketsWithLocation": 0,
+        "bucketSpanDays": 0,
+        "point": {
+          "latE7": 439406551,
+          "lngE7": -788458768
+        },
+        "placeId": "ChIJaWUW8E4b1YkRLPJRTVf0RTw",
+        "placePoint": {
+          "latE7": 439405376,
+          "lngE7": -788457340
+        }
+      }, {
+        "score": 862.0,
+        "numBucketsWithLocation": 0,
+        "bucketSpanDays": 0,
+        "point": {
+          "latE7": 439362266,
+          "lngE7": -788308334
+        },
+        "placeId": "ChIJV8SII64E1YkRvAqrnP5G_x8",
+        "placePoint": {
+          "latE7": 439362443,
+          "lngE7": -788308585
+        }
+      }, {
+        "score": 15.0,
+        "numBucketsWithLocation": 0,
+        "bucketSpanDays": 0,
+        "point": {
+          "latE7": 439252743,
+          "lngE7": -788749588
+        },
+        "placeId": "ChIJNcJr94Qc1YkRXPX0m3SswPk",
+        "placePoint": {
+          "latE7": 439250956,
+          "lngE7": -788748381
+        }
+      }],
+      "windowSizeHrs": 2016,
+      "topRankedPlacesPlaceIds": ["ChIJV8SII64E1YkRvAqrnP5G_x8", "ChIJNcJr94Qc1YkRXPX0m3SswPk", "ChIJaWUW8E4b1YkRLPJRTVf0RTw"],
+      "processWindow": {
+        "startTime": "2023-09-20T08:01:15Z",
+        "endTime": "2023-12-13T08:01:15Z"
+      },
+      "metadata": {
+        "platform": "UNKNOWN"
+      }
+    }
+  }, {
+    "deviceId": "0",
+    "placeAggregates": {
+      "placeAggregateInfo": [{
+        "score": 874.0,
+        "numBucketsWithLocation": 0,
+        "bucketSpanDays": 0,
+        "point": {
+          "latE7": 439362258,
+          "lngE7": -788308344
+        },
+        "placeId": "ChIJV8SII64E1YkRvAqrnP5G_x8",
+        "placePoint": {
+          "latE7": 439362443,
+          "lngE7": -788308585
+        }
+      }, {
+        "score": 6.0,
+        "numBucketsWithLocation": 0,
+        "bucketSpanDays": 0,
+        "point": {
+          "latE7": 439396308,
+          "lngE7": -788515883
+        },
+        "placeId": "ChIJ93yZJEUb1YkRbIEKh6BVbqs",
+        "placePoint": {
+          "latE7": 439397622,
+          "lngE7": -788519525
+        }
+      }, {
+        "score": 11.0,
+        "numBucketsWithLocation": 0,
+        "bucketSpanDays": 0,
+        "point": {
+          "latE7": 439253294,
+          "lngE7": -788749012
+        },
+        "placeId": "ChIJNcJr94Qc1YkRXPX0m3SswPk",
+        "placePoint": {
+          "latE7": 439250956,
+          "lngE7": -788748381
+        }
+      }],
+      "windowSizeHrs": 2016,
+      "topRankedPlacesPlaceIds": ["ChIJV8SII64E1YkRvAqrnP5G_x8", "ChIJNcJr94Qc1YkRXPX0m3SswPk", "ChIJ93yZJEUb1YkRbIEKh6BVbqs"],
+      "processWindow": {
+        "startTime": "2023-09-18T08:01:10Z",
+        "endTime": "2023-12-11T08:01:10Z"
+      },
+      "metadata": {
+        "platform": "UNKNOWN"
+      }
+    }
+  }, {
+    "deviceId": "0",
+    "placeAggregates": {
+      "placeAggregateInfo": [{
+        "score": 870.0,
+        "numBucketsWithLocation": 0,
+        "bucketSpanDays": 0,
+        "point": {
+          "latE7": 439362272,
+          "lngE7": -788308381
+        },
+        "placeId": "ChIJV8SII64E1YkRvAqrnP5G_x8",
+        "placePoint": {
+          "latE7": 439362443,
+          "lngE7": -788308585
+        }
+      }, {
+        "score": 21.0,
+        "numBucketsWithLocation": 0,
+        "bucketSpanDays": 0,
+        "point": {
+          "latE7": 439254671,
+          "lngE7": -788750135
+        },
+        "placeId": "ChIJNcJr94Qc1YkRXPX0m3SswPk",
+        "placePoint": {
+          "latE7": 439250956,
+          "lngE7": -788748381
+        }
+      }, {
+        "score": 6.0,
+        "numBucketsWithLocation": 0,
+        "bucketSpanDays": 0,
+        "point": {
+          "latE7": 439352711,
+          "lngE7": -788262603
+        },
+        "placeId": "ChIJ44zPZ6UE1YkRJREVPALbKh8",
+        "placePoint": {
+          "latE7": 439349008,
+          "lngE7": -788262996
+        }
+      }],
+      "windowSizeHrs": 2016,
+      "topRankedPlacesPlaceIds": ["ChIJV8SII64E1YkRvAqrnP5G_x8", "ChIJNcJr94Qc1YkRXPX0m3SswPk", "ChIJ44zPZ6UE1YkRJREVPALbKh8"],
+      "processWindow": {
+        "startTime": "2023-09-12T08:00:58Z",
+        "endTime": "2023-12-05T08:00:58Z"
+      },
+      "metadata": {
+        "platform": "UNKNOWN"
+      }
+    }
+  }]
+}
