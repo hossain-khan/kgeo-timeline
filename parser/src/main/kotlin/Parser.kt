@@ -9,6 +9,7 @@ import dev.hossain.timeline.model.ActivityType
 import dev.hossain.timeline.model.Records
 import dev.hossain.timeline.model.SemanticTimeline
 import dev.hossain.timeline.model.Settings
+import dev.hossain.timeline.model.timeline.TimelineEdits
 import okio.BufferedSource
 
 /**
@@ -71,6 +72,22 @@ class Parser constructor() {
    */
   fun parseSemanticTimeline(bufferedSource: BufferedSource): SemanticTimeline {
     val adapter: JsonAdapter<SemanticTimeline> = moshi.adapter(SemanticTimeline::class.java)
+    return adapter.fromJson(bufferedSource)!!
+  }
+
+  /**
+   * Parse JSON string to [TimelineEdits] object.
+   */
+  fun parseTimelineEdits(json: String): TimelineEdits {
+    val adapter: JsonAdapter<TimelineEdits> = moshi.adapter(TimelineEdits::class.java)
+    return adapter.fromJson(json)!!
+  }
+
+  /**
+   * Parse JSON buffered source to [TimelineEdits] object.
+   */
+  fun parseTimelineEdits(bufferedSource: BufferedSource): TimelineEdits {
+    val adapter: JsonAdapter<TimelineEdits> = moshi.adapter(TimelineEdits::class.java)
     return adapter.fromJson(bufferedSource)!!
   }
 }
