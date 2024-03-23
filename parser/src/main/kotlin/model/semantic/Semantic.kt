@@ -1,7 +1,8 @@
-package dev.hossain.timeline.model
+package dev.hossain.timeline.model.semantic
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import dev.hossain.timeline.model.record.Activity
 import java.time.ZonedDateTime
 
 /**

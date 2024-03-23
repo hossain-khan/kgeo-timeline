@@ -2,6 +2,7 @@ package dev.hossain.timeline.model
 
 import com.google.common.truth.Truth.assertThat
 import dev.hossain.timeline.Parser
+import dev.hossain.timeline.model.record.ActivityType
 import kotlin.test.Test
 
 /**

@@ -2,7 +2,7 @@ package dev.hossain.timeline.model
 
 import com.google.common.truth.Truth.assertThat
 import dev.hossain.timeline.Parser
-import dev.hossain.timeline.model.timeline.Point
+import dev.hossain.timeline.model.edits.Point
 import kotlin.test.Test
 
 class TimelineEditsTest {

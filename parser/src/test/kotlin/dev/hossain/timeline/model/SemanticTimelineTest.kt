@@ -2,6 +2,11 @@ package dev.hossain.timeline.model
 
 import com.google.common.truth.Truth.assertThat
 import dev.hossain.timeline.Parser
+import dev.hossain.timeline.model.semantic.Confidence
+import dev.hossain.timeline.model.semantic.PlaceConfidence
+import dev.hossain.timeline.model.semantic.PlaceVisitImportance
+import dev.hossain.timeline.model.semantic.SemanticActivityType
+import dev.hossain.timeline.model.semantic.SemanticTimeline
 import kotlin.test.Test
 
 /**

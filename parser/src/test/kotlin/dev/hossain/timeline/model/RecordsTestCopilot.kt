@@ -1,5 +1,14 @@
 package dev.hossain.timeline.model
 
+import dev.hossain.timeline.model.record.AccessPoint
+import dev.hossain.timeline.model.record.Activity
+import dev.hossain.timeline.model.record.ActivityRecord
+import dev.hossain.timeline.model.record.ActivityType
+import dev.hossain.timeline.model.record.LocationMetadata
+import dev.hossain.timeline.model.record.LocationRecord
+import dev.hossain.timeline.model.record.LocationRecordSource
+import dev.hossain.timeline.model.record.Records
+import dev.hossain.timeline.model.record.WifiScan
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
