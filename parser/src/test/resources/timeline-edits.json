@@ -4,8 +4,8 @@
     "placeAggregates": {
       "placeAggregateInfo": [{
         "score": 5.0,
-        "numBucketsWithLocation": 0,
-        "bucketSpanDays": 0,
+        "numBucketsWithLocation": 14,
+        "bucketSpanDays": 4,
         "point": {
           "latE7": 439406551,
           "lngE7": -788458768
