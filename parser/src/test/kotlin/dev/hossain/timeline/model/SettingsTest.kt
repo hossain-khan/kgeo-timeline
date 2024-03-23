@@ -2,6 +2,8 @@ package dev.hossain.timeline.model
 
 import com.google.common.truth.Truth.assertThat
 import dev.hossain.timeline.Parser
+import dev.hossain.timeline.model.settings.DeviceSpec
+import dev.hossain.timeline.model.settings.Settings
 import kotlin.test.Test
 
 /**
