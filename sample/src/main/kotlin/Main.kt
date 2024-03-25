@@ -42,6 +42,9 @@ private fun parseRecords(resourcesDir: File, parser: Parser) {
   println()
 }
 
+/**
+ * Parse semantic location history files.
+ */
 fun parseSemanticRecords(resourcesDir: File, parser: Parser) {
   val directory = File(resourcesDir, "Semantic Location History")
 
