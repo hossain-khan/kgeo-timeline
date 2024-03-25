@@ -124,6 +124,11 @@ enum class LocationRecordSource {
   GPS,
 
   /**
+   * Indicates the location information was provided manually by user.
+   */
+  MANUAL,
+
+  /**
    * Indicates the location information was provided by visiting location (e.g. on arrival).
    */
   VISIT_ARRIVAL,
