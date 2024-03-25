@@ -3,13 +3,14 @@ package dev.hossain.timeline
 import ZonedDateTimeAdapter
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
-import com.squareup.moshi.adapters.EnumJsonAdapter
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dev.hossain.timeline.model.edits.TimelineEdits
 import dev.hossain.timeline.model.record.ActivityType
+import dev.hossain.timeline.model.record.LocationRecordSource
 import dev.hossain.timeline.model.record.Records
 import dev.hossain.timeline.model.semantic.SemanticTimeline
 import dev.hossain.timeline.model.settings.Settings
+import dev.hossain.timeline.moshi.EnumCustomJsonAdapter
 import okio.BufferedSource
 
 /**
@@ -23,7 +24,14 @@ class Parser constructor() {
       .add(ZonedDateTimeAdapter())
       .add(
         ActivityType::class.java,
-        EnumJsonAdapter.create(ActivityType::class.java).withUnknownFallback(ActivityType.UNKNOWN),
+        EnumCustomJsonAdapter.create(ActivityType::class.java).withUnknownFallback(ActivityType.UNKNOWN),
+      )
+      .add(
+        LocationRecordSource::class.java,
+        EnumCustomJsonAdapter.create(LocationRecordSource::class.java).withUnknownFallback(
+          fallbackValue = LocationRecordSource.UNKNOWN,
+          useCaseInsensitiveName = true,
+        ),
       )
       .build()
 
