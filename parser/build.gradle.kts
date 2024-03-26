@@ -7,7 +7,7 @@ plugins {
 
   // KSP plugin
   // https://github.com/google/ksp/releases
-  id("com.google.devtools.ksp").version("1.9.23-1.0.19") // Or latest version of KSP
+  id("com.google.devtools.ksp").version("1.9.23-1.0.19")
 }
 
 group = "dev.hossain.timeline"
@@ -19,7 +19,6 @@ repositories {
 
 dependencies {
   implementation("com.squareup.moshi:moshi-kotlin:1.15.1")
-  implementation("com.squareup.moshi:moshi-adapters:1.15.1")
   ksp("com.squareup.moshi:moshi-kotlin-codegen:1.15.1")
   implementation("com.squareup.okio:okio:3.9.0")
   testImplementation("org.jetbrains.kotlin:kotlin-test")

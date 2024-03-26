@@ -9,10 +9,10 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class TimelineEdits(
   /**
-   * Timeline Edits
+   * Timeline edit items.
    */
   @Json(name = "timelineEdits")
-  val timelineEdits: List<TimelineEditsItem>,
+  val items: List<TimelineEditsItem> = emptyList(),
 )
 
 /**
@@ -29,7 +29,12 @@ data class TimelineEditsItem(
    * Aggregated information about places visited by the device.
    */
   @Json(name = "placeAggregates")
-  val placeAggregates: PlaceAggregates,
+  val placeAggregates: PlaceAggregates?,
+  /**
+   * Raw signal data from the device.
+   */
+  @Json(name = "rawSignal")
+  val rawSignal: RawSignal?,
 )
 
 @JsonClass(generateAdapter = true)
@@ -110,6 +115,28 @@ data class ProcessWindow(
 )
 
 /**
+ * Raw signal data from the device.
+ */
+@JsonClass(generateAdapter = true)
+data class RawSignal(
+  /**
+   * The signal data, including position, activity record, and wifi scan.
+   */
+  @Json(name = "signal")
+  val signal: Signal?,
+  /**
+   * An additional timestamp associated with the raw signal.
+   */
+  @Json(name = "additionalTimestamp")
+  val additionalTimestamp: String,
+  /**
+   * Metadata about the data object.
+   */
+  @Json(name = "metadata")
+  val metadata: Metadata,
+)
+
+/**
  * The signal data, including position, activity record, and wifi scan.
  */
 @JsonClass(generateAdapter = true)
@@ -118,17 +145,17 @@ data class Signal(
    * The position data, including point, accuracy, altitude, source, and timestamp.
    */
   @Json(name = "position")
-  val position: Position,
+  val position: Position?,
   /**
    * The activity record data, including detected activities and timestamp.
    */
   @Json(name = "activityRecord")
-  val activityRecord: ActivityRecord,
+  val activityRecord: ActivityRecord?,
   /**
    * The wifi scan data, including delivery time, devices, and source.
    */
   @Json(name = "wifiScan")
-  val wifiScan: WifiScan,
+  val wifiScan: WifiScan?,
 )
 
 @JsonClass(generateAdapter = true)
@@ -142,22 +169,22 @@ data class Position(
    * The accuracy of the position in millimeters.
    */
   @Json(name = "accuracyMm")
-  val accuracyMm: Int,
+  val accuracyMm: Int?,
   /**
    * The altitude of the position in meters.
    */
   @Json(name = "altitudeMeters")
-  val altitudeMeters: Double,
+  val altitudeMeters: Double?,
   /**
    * The source of the position data.
    */
   @Json(name = "source")
-  val source: String,
+  val source: String?,
   /**
    * Speed in meters per second.
    */
   @Json(name = "speedMetersPerSecond")
-  val speedMetersPerSecond: Double,
+  val speedMetersPerSecond: Double?,
   /**
    * The timestamp of the position data.
    */
@@ -204,12 +231,12 @@ data class WifiScan(
    * An array of wifi devices, including mac address and raw RSSI.
    */
   @Json(name = "devices")
-  val devices: List<WifiDevice>,
+  val devices: List<WifiDevice> = emptyList(),
   /**
    * The source of the wifi scan data.
    */
   @Json(name = "source")
-  val source: String,
+  val source: String?,
 )
 
 @JsonClass(generateAdapter = true)
