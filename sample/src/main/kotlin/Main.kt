@@ -30,6 +30,7 @@ fun main() {
   val parser = Parser()
   parseRecords(resourcesDir, parser)
   parseSemanticRecords(resourcesDir, parser)
+  parseTimelineEdits(resourcesDir, parser)
 }
 
 private fun parseRecords(resourcesDir: File, parser: Parser) {
@@ -60,4 +61,12 @@ fun parseSemanticRecords(resourcesDir: File, parser: Parser) {
       println("Got timeline items: ${semanticTimeline.timelineObjects.size}")
     }
   }
+}
+
+fun parseTimelineEdits(resourcesDir: File, parser: Parser) {
+  val timelineEditsFile = File(resourcesDir, "Timeline Edits.json")
+  val bufferedSource: BufferedSource = timelineEditsFile.source().buffer()
+  val timelineEdits = parser.parseTimelineEdits(bufferedSource)
+
+  println("Got timeline edits: ${timelineEdits.timelineEdits.size} edits.")
 }
