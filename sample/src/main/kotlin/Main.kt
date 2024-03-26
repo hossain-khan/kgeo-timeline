@@ -39,7 +39,7 @@ private fun parseRecords(resourcesDir: File, parser: Parser) {
   val bufferedSource: BufferedSource = recordsFile.source().buffer()
   val records = parser.parseRecords(bufferedSource)
 
-  println("Got records: ${records.locations.size} records.")
+  println("\n\uD83D\uDFE2 Got records: ${records.locations.size} records.")
   println()
 }
 
@@ -49,18 +49,25 @@ private fun parseRecords(resourcesDir: File, parser: Parser) {
 fun parseSemanticRecords(resourcesDir: File, parser: Parser) {
   val directory = File(resourcesDir, "Semantic Location History")
 
+  val dataMap = mutableMapOf<String, List<String>>()
+
   val semanticYears = directory.listFiles()
   semanticYears?.forEach { yearDirectory ->
     val files = yearDirectory.listFiles()
     files?.forEach {
       // List each files of directory
-      println("Parsing file: ${it.name}")
       val bufferedSource: BufferedSource = it.source().buffer()
       val semanticTimeline = parser.parseSemanticTimeline(bufferedSource)
 
-      println("Got timeline items: ${semanticTimeline.timelineObjects.size}")
+      if(dataMap.containsKey(yearDirectory.name)) {
+        dataMap[yearDirectory.name] = dataMap[yearDirectory.name]!!.plus("${it.name.removeSurrounding("${yearDirectory.name}_", ".json")}: ${semanticTimeline.timelineObjects.size}")
+      } else {
+        dataMap[yearDirectory.name] = listOf("${it.name.removeSurrounding("${yearDirectory.name}_", ".json")}: ${semanticTimeline.timelineObjects.size}")
+      }
     }
   }
+
+  println("\n\uD83D\uDFE2 Got semantic location history data:\n${dataMap.entries.joinToString("\n")}")
 }
 
 fun parseTimelineEdits(resourcesDir: File, parser: Parser) {
@@ -68,5 +75,5 @@ fun parseTimelineEdits(resourcesDir: File, parser: Parser) {
   val bufferedSource: BufferedSource = timelineEditsFile.source().buffer()
   val timelineEdits = parser.parseTimelineEdits(bufferedSource)
 
-  println("Got timeline edits: ${timelineEdits.timelineEdits.size} edits.")
+  println("\n\uD83D\uDFE2 Got timeline edits: ${timelineEdits.items.size} items edited.")
 }

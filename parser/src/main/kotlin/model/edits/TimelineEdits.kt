@@ -9,10 +9,10 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class TimelineEdits(
   /**
-   * Timeline Edits
+   * Timeline edit items.
    */
   @Json(name = "timelineEdits")
-  val timelineEdits: List<TimelineEditsItem> = emptyList(),
+  val items: List<TimelineEditsItem> = emptyList(),
 )
 
 /**
