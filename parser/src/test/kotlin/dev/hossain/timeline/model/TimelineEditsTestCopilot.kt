@@ -1,7 +1,6 @@
 package dev.hossain.timeline.model
 
 import com.google.common.truth.Truth.assertThat
-import com.squareup.moshi.JsonDataException
 import com.squareup.moshi.JsonEncodingException
 import dev.hossain.timeline.Parser
 import dev.hossain.timeline.model.edits.Point
@@ -21,17 +20,15 @@ class TimelineEditsTestCopilot {
       }
       """.trimIndent()
     val edits: TimelineEdits = parser.parseTimelineEdits(json)
-    assertThat(edits.timelineEdits).isEmpty()
+    assertThat(edits.items).isEmpty()
   }
 
   @Test
-  fun `should throw exception when json is empty`() {
+  fun `parse to empty items when json is empty`() {
     val json = "{}"
-    val error =
-      assertThrows<JsonDataException> {
-        parser.parseTimelineEdits(json)
-      }
-    assertThat(error).isInstanceOf(JsonDataException::class.java)
+    val timelineEdits = parser.parseTimelineEdits(json)
+
+    assertThat(timelineEdits.items).isEmpty()
   }
 
   @Test
@@ -69,7 +66,7 @@ class TimelineEditsTestCopilot {
     """
     val edits: TimelineEdits = parser.parseTimelineEdits(json)
 
-    assertThat(edits.timelineEdits.first().deviceId).isEqualTo("1")
+    assertThat(edits.items.first().deviceId).isEqualTo("1")
   }
 
   @Test
@@ -112,8 +109,8 @@ class TimelineEditsTestCopilot {
     """
     val edits: TimelineEdits = parser.parseTimelineEdits(json)
 
-    val firstEdit = edits.timelineEdits.first()
-    val firstPlaceAggregate = firstEdit.placeAggregates.placeAggregateInfo.first()
+    val firstEdit = edits.items.first()
+    val firstPlaceAggregate = firstEdit.placeAggregates!!.placeAggregateInfo.first()
     assertThat(firstPlaceAggregate.score).isEqualTo(5.0)
     assertThat(firstPlaceAggregate.numBucketsWithLocation).isEqualTo(14)
     assertThat(firstPlaceAggregate.bucketSpanDays).isEqualTo(4)
