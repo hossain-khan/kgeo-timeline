@@ -8,10 +8,14 @@ plugins {
   // KSP plugin
   // https://github.com/google/ksp/releases
   id("com.google.devtools.ksp").version("1.9.23-1.0.19")
+
+  // Publishing plugin
+  // https://docs.gradle.org/current/userguide/publishing_maven.html
+  `maven-publish`
 }
 
 group = "dev.hossain.timeline"
-version = "1.0-SNAPSHOT"
+version = "0.2-SNAPSHOT"
 
 repositories {
   mavenCentral()
@@ -37,5 +41,18 @@ ktlint {
   debug = true
   filter {
     exclude { projectDir.toURI().relativize(it.file.toURI()).path.contains("/generated/") }
+  }
+}
+
+// https://docs.gradle.org/current/userguide/publishing_maven.html#sec:identity_values_in_the_generated_pom
+publishing {
+  publications {
+    create<MavenPublication>("maven") {
+      groupId = "dev.hossain.timeline"
+      artifactId = "parser"
+      version = "0.2"
+
+      from(components["java"])
+    }
   }
 }
