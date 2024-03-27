@@ -6,9 +6,9 @@ Kotlin library for parsing Google Location History (Timeline) data.
 <img width="700" alt="google-takeout-location-history" src="https://github.com/hossain-khan/google-location-history/assets/99822/64b6627e-bb9e-4c61-bc9a-f0885d0659f8">
 
 ## Run Sample App
-Open the project in IntelliJ IDEA, and run the `sample/src/main/kotlin/Main.kt` file.
+Open the project in IntelliJ IDEA, and run the `sample/src/main/kotlin/Main.kt` [file](https://github.com/hossain-khan/kgeo-timeline/blob/main/sample/src/main/kotlin/Main.kt).
 
-> ℹ️ **Note:** Read instructions in the `Main.kt` on where to add the unzipped Google Location History data.
+> ℹ️ **Note:** Read instructions in the [`Main.kt`](https://github.com/hossain-khan/kgeo-timeline/blob/main/sample/src/main/kotlin/Main.kt) on where to add the unzipped Google Location History data.
 
 ### Sample Output
 Here is a sample output from running the app with Google Location History data.
