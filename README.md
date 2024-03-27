@@ -1,3 +1,5 @@
+[![](https://jitpack.io/v/hossain-khan/kgeo-timeline.svg)](https://jitpack.io/#hossain-khan/kgeo-timeline)
+
 # KGeoTimeline 📍
 Kotlin library for parsing Google Location History (Timeline) data.
 
