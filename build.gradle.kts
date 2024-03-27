@@ -1,21 +1,39 @@
 plugins {
-    kotlin("jvm") version "1.9.23"
+  kotlin("jvm") version "1.9.23"
+
+  // Publishing plugin
+  // https://docs.gradle.org/current/userguide/publishing_maven.html
+  `maven-publish`
 }
 
 group = "dev.hossain.timeline"
-version = "1.0-SNAPSHOT"
+version = "0.2-SNAPSHOT"
 
 repositories {
-    mavenCentral()
+  mavenCentral()
 }
 
 dependencies {
-    testImplementation("org.jetbrains.kotlin:kotlin-test")
+  testImplementation("org.jetbrains.kotlin:kotlin-test")
 }
 
 tasks.test {
-    useJUnitPlatform()
+  useJUnitPlatform()
 }
 kotlin {
-    jvmToolchain(21)
+  jvmToolchain(21)
+}
+
+// https://docs.gradle.org/current/userguide/publishing_maven.html#sec:identity_values_in_the_generated_pom
+publishing {
+  publications {
+    create<MavenPublication>("mavenJava") {
+      println("Publishing to Maven Central")
+      groupId = group.toString()
+      artifactId = "parser"
+      version = version
+
+      from(components["java"])
+    }
+  }
 }
