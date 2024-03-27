@@ -8,8 +8,8 @@ Open the project in IntelliJ IDEA, and run the `sample/src/main/kotlin/Main.kt` 
 
 > ℹ️ **Note:** Read instructions in the `Main.kt` on where to add the unzipped Google Location History data.
 
-### Sample Usage
-Here is sample output from running the app with Google Location History data.
+### Sample Output
+Here is a sample output from running the app with Google Location History data.
 
 ```
 Sample app for Google Location History Parser project.
