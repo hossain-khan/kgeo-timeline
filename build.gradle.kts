@@ -28,8 +28,9 @@ kotlin {
 publishing {
   publications {
     create<MavenPublication>("mavenJava") {
+      println("Publishing to Maven Central")
       groupId = group.toString()
-      artifactId = rootProject.name
+      artifactId = "parser"
       version = version
 
       from(components["java"])
