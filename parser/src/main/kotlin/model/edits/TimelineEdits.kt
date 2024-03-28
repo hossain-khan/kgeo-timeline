@@ -2,6 +2,7 @@ package dev.hossain.timeline.model.edits
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import java.time.ZonedDateTime
 
 /**
  * List of all timeline edits.
@@ -43,7 +44,7 @@ data class PlaceAggregates(
    * An array of place information, including score, location, and place ID.
    */
   @Json(name = "placeAggregateInfo")
-  val placeAggregateInfo: List<PlaceAggregateInfoItem>,
+  val placeAggregateInfo: List<PlaceAggregateInfoItem> = emptyList(),
   /**
    * The size of the window in hours for the place aggregates.
    */
@@ -189,7 +190,7 @@ data class Position(
    * The timestamp of the position data.
    */
   @Json(name = "timestamp")
-  val timestamp: String,
+  val timestamp: ZonedDateTime,
 )
 
 @JsonClass(generateAdapter = true)
@@ -203,7 +204,7 @@ data class ActivityRecord(
    * The timestamp of the activity record.
    */
   @Json(name = "timestamp")
-  val timestamp: String,
+  val timestamp: ZonedDateTime,
 )
 
 @JsonClass(generateAdapter = true)
@@ -233,7 +234,7 @@ data class WifiScan(
   @Json(name = "devices")
   val devices: List<WifiDevice> = emptyList(),
   /**
-   * The source of the wifi scan data.
+   * The source of the Wi-Fi scan data.
    */
   @Json(name = "source")
   val source: String?,
@@ -271,12 +272,14 @@ data class Metadata(
 @JsonClass(generateAdapter = true)
 data class Point(
   /**
-   * Latitude coordinate of the point. Degrees multiplied by 10^7 and rounded to the nearest integer, in the range -900000000 to +900000000 (divide value by 10^7 for the usual range -90° to +90°).
+   * Latitude coordinate of the point. Degrees multiplied by 10^7 and rounded to the nearest integer,
+   * in the range -900000000 to +900000000 (divide value by 10^7 for the usual range -90° to +90°).
    */
   @Json(name = "latE7")
   val latE7: Int,
   /**
-   * Longitude coordinate of the point. Degrees multiplied by 10^7 and rounded to the nearest integer, in the range -1800000000 to +1800000000 (divide value by 10^7 for the usual range -180° to +180°).
+   * Longitude coordinate of the point. Degrees multiplied by 10^7 and rounded to the nearest integer,
+   * in the range -1800000000 to +1800000000 (divide value by 10^7 for the usual range -180° to +180°).
    */
   @Json(name = "lngE7")
   val lngE7: Int,
