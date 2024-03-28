@@ -209,40 +209,35 @@ data class Location(
  * }
  * ```
  */
-enum class SemanticType(val title: String, val description: String, val extraColor: String) {
+enum class SemanticType(val title: String, val description: String) {
   @Json(name = "TYPE_HOME")
   TYPE_HOME(
     "Type Home",
-    "The place has been designated as 'Home' by the user.",
-    "#03a9f4",
+    "The place has been designated as 'Home' by the user."
   ),
 
   @Json(name = "TYPE_WORK")
   TYPE_WORK(
     "Type Work",
-    "The place has been designated as 'Work' by the user.",
-    "#03a9f4",
+    "The place has been designated as 'Work' by the user."
   ),
 
   @Json(name = "TYPE_SEARCHED_ADDRESS")
   TYPE_SEARCHED_ADDRESS(
     "Type Searched Address",
-    "The user has searched for this place in the past.",
-    "#03a9f4",
+    "The user has searched for this place in the past."
   ),
 
   @Json(name = "TYPE_ALIASED_LOCATION")
   TYPE_ALIASED_LOCATION(
     "Type Aliased Location",
-    "The place has been given a private label by the user.",
-    "#03a9f4",
+    "The place has been given a private label by the user."
   ),
 
   @Json(name = "TYPE_UNKNOWN")
   TYPE_UNKNOWN(
     "Type Unknown",
-    "The place has not been categorized.",
-    "#03a9f4",
+    "The place has not been categorized."
   ),
 }
 
@@ -378,7 +373,7 @@ data class PlaceVisit(
    * Checkin for this place visit
    */
   @Json(name = "checkin")
-  val checkin: Checkin?,
+  val checkin: CheckIn?,
 )
 
 /**
@@ -708,10 +703,10 @@ data class OriginalCandidates(
 )
 
 @JsonClass(generateAdapter = true)
-data class Checkin(
+data class CheckIn(
   /** The timestamp of the checkin */
   @Json(name = "timestamp")
-  val timestamp: String?,
+  val timestamp: ZonedDateTime?,
   /** The place ID of the checkin */
   @Json(name = "placeId")
   val placeId: String?,
