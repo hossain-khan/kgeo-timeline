@@ -213,31 +213,31 @@ enum class SemanticType(val title: String, val description: String) {
   @Json(name = "TYPE_HOME")
   TYPE_HOME(
     "Type Home",
-    "The place has been designated as 'Home' by the user."
+    "The place has been designated as 'Home' by the user.",
   ),
 
   @Json(name = "TYPE_WORK")
   TYPE_WORK(
     "Type Work",
-    "The place has been designated as 'Work' by the user."
+    "The place has been designated as 'Work' by the user.",
   ),
 
   @Json(name = "TYPE_SEARCHED_ADDRESS")
   TYPE_SEARCHED_ADDRESS(
     "Type Searched Address",
-    "The user has searched for this place in the past."
+    "The user has searched for this place in the past.",
   ),
 
   @Json(name = "TYPE_ALIASED_LOCATION")
   TYPE_ALIASED_LOCATION(
     "Type Aliased Location",
-    "The place has been given a private label by the user."
+    "The place has been given a private label by the user.",
   ),
 
   @Json(name = "TYPE_UNKNOWN")
   TYPE_UNKNOWN(
     "Type Unknown",
-    "The place has not been categorized."
+    "The place has not been categorized.",
   ),
 }
 
