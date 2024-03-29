@@ -4,6 +4,10 @@ plugins {
   // Publishing plugin
   // https://docs.gradle.org/current/userguide/publishing_maven.html
   `maven-publish`
+
+  // Dokka - Documentation Engine for Kotlin
+  // https://github.com/Kotlin/dokka
+  id("org.jetbrains.dokka") version "1.9.20"
 }
 
 group = "dev.hossain.timeline"
@@ -11,6 +15,10 @@ version = "0.3-SNAPSHOT"
 
 repositories {
   mavenCentral()
+}
+
+subprojects {
+  apply(plugin = "org.jetbrains.dokka")
 }
 
 dependencies {
