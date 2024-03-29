@@ -39,7 +39,7 @@ import java.lang.reflect.AnnotatedElement
  *   .build();
  * ```
  */
-class EnumCustomJsonAdapter<T : Enum<T>> internal constructor(
+internal class EnumCustomJsonAdapter<T : Enum<T>> internal constructor(
   private val enumType: Class<T>,
   private val fallbackValue: T?,
   private val useFallbackValue: Boolean,
