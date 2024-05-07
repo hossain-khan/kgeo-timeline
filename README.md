@@ -29,6 +29,20 @@ Sample app for Google Location History Parser project.
 🟢 Got timeline edits: 195,444 items edited.
 ```
 
+## API Documentation
+
+📖 https://hossain-khan.github.io/kgeo-timeline/
+
+### How to build and push API doc
+
+> `dokkaHtml` - Generates documentation in 'html' format
+
+```
+./gradlew dokkaHtml
+```
+
+Override content from `./parser/build/dokka/html` to the GitHub pages branch.
+
 
 # References
 
