@@ -41,3 +41,4 @@ Some related projects
 * https://github.com/pwall567/json-kotlin-schema
 * https://github.com/pwall567/json-kotlin-schema-codegen
 * https://github.com/jamesjarvis/mappyboi
+* https://github.com/DovarFalcone/google-takeout-location-parser
