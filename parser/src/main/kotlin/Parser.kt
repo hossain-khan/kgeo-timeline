@@ -15,6 +15,19 @@ import okio.BufferedSource
 
 /**
  * Parser to parse Google Location Timeline JSON to Kotlin objects.
+ *
+ * Sample usages for parsing different JSON types:
+ * ```kotlin
+ * val parser = Parser()
+ *
+ * // ...
+ * val bufferedSourceRecords: BufferedSource = recordsFile.source().buffer()
+ * val records = parser.parseRecords(bufferedSourceRecords)
+ *
+ * // ...
+ * val bufferedSourceSemantic: BufferedSource = semanticMonthFile.source().buffer()
+ * val semanticTimeline = parser.parseSemanticTimeline(bufferedSourceSemantic)
+ * ```
  */
 class Parser constructor() {
   // Moshi instance with custom adapter to parse the timeline data.
