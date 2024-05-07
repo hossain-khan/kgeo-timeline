@@ -35,14 +35,9 @@ Sample app for Google Location History Parser project.
 
 ### How to build and push API doc
 
+API docs are automatically published to the GitHub pages site using [static workflow](https://github.com/hossain-khan/kgeo-timeline/blob/main/.github/workflows/static.yml).
+
 > `dokkaHtml` - Generates documentation in 'html' format
-
-```
-./gradlew dokkaHtml
-```
-
-Override content from `./parser/build/dokka/html` to the GitHub pages branch.
-
 
 # References
 
