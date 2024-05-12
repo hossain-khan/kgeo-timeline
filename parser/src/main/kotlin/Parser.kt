@@ -50,6 +50,15 @@ class Parser constructor() {
 
   /**
    * Parse JSON string to [Records] object.
+   *
+   * ```kotlin
+   * // Sample usage of parser to parse records JSON.
+   * val parser = Parser()
+   * val json: String = File("your-file.json").bufferedReader().readText()
+   * val records: Records = parser.parseRecords(json)
+   *
+   * println("Got records: ${records.locations.size} locations.")
+   * ```
    */
   fun parseRecords(json: String): Records {
     val adapter: JsonAdapter<Records> = moshi.adapter(Records::class.java)
@@ -58,6 +67,15 @@ class Parser constructor() {
 
   /**
    * Parse JSON buffered source to [Records] object.
+   *
+   * ```kotlin
+   * // Sample usage of parser to parse records JSON.
+   * val parser = Parser()
+   * val bufferedSource: BufferedSource = File("your-file.json").source().buffer()
+   * val records: Records = parser.parseRecords(bufferedSource)
+   *
+   * println("Got records: ${records.locations.size} locations.")
+   * ```
    */
   fun parseRecords(bufferedSource: BufferedSource): Records {
     val adapter: JsonAdapter<Records> = moshi.adapter(Records::class.java)
@@ -66,6 +84,13 @@ class Parser constructor() {
 
   /**
    * Parse JSON string to [Settings] object.
+   *
+   * ```kotlin
+   * // Sample usage of parser to parse settings JSON.
+   * val parser = Parser()
+   * val json: String = File("your-file.json").bufferedReader().readText()
+   * val settings: Settings = parser.parseSettings(json)
+   * ```
    */
   fun parseSettings(json: String): Settings {
     val adapter: JsonAdapter<Settings> = moshi.adapter(Settings::class.java)
@@ -74,6 +99,13 @@ class Parser constructor() {
 
   /**
    * Parse JSON buffered source to [Settings] object.
+   *
+   * ```kotlin
+   * // Sample usage of parser to parse settings JSON.
+   * val parser = Parser()
+   * val bufferedSource: BufferedSource = File("your-file.json").source().buffer()
+   * val settings: Settings = parser.parseSettings(bufferedSource)
+   * ```
    */
   fun parseSettings(bufferedSource: BufferedSource): Settings {
     val adapter: JsonAdapter<Settings> = moshi.adapter(Settings::class.java)
@@ -82,6 +114,15 @@ class Parser constructor() {
 
   /**
    * Parse JSON string to [SemanticTimeline] object.
+   *
+   * ```kotlin
+   * // Sample usage of parser to parse semantic timeline JSON.
+   * val parser = Parser()
+   * val json: String = File("your-file.json").bufferedReader().readText()
+   * val semanticTimeline: SemanticTimeline = parser.parseSemanticTimeline(json)
+   *
+   * println("Got semantic timeline: ${semanticTimeline.timelineObjects.size} objects.")
+   * ```
    */
   fun parseSemanticTimeline(json: String): SemanticTimeline {
     val adapter: JsonAdapter<SemanticTimeline> = moshi.adapter(SemanticTimeline::class.java)
@@ -90,6 +131,15 @@ class Parser constructor() {
 
   /**
    * Parse JSON buffered source to [SemanticTimeline] object.
+   *
+   * ```kotlin
+   * // Sample usage of parser to parse semantic timeline JSON.
+   * val parser = Parser()
+   * val bufferedSource: BufferedSource = File("your-file.json").source().buffer()
+   * val semanticTimeline: SemanticTimeline = parser.parseSemanticTimeline(bufferedSource)
+   *
+   * println("Got semantic timeline: ${semanticTimeline.timelineObjects.size} objects.")
+   * ```
    */
   fun parseSemanticTimeline(bufferedSource: BufferedSource): SemanticTimeline {
     val adapter: JsonAdapter<SemanticTimeline> = moshi.adapter(SemanticTimeline::class.java)
@@ -98,6 +148,13 @@ class Parser constructor() {
 
   /**
    * Parse JSON string to [TimelineEdits] object.
+   *
+   * ```kotlin
+   * // Sample usage of parser to parse timeline edits JSON.
+   * val parser = Parser()
+   * val json: String = File("your-file.json").bufferedReader().readText()
+   * val edits: TimelineEdits = parser.parseTimelineEdits(json)
+   * ```
    */
   fun parseTimelineEdits(json: String): TimelineEdits {
     val adapter: JsonAdapter<TimelineEdits> = moshi.adapter(TimelineEdits::class.java)
@@ -106,6 +163,13 @@ class Parser constructor() {
 
   /**
    * Parse JSON buffered source to [TimelineEdits] object.
+   *
+   * ```kotlin
+   * // Sample usage of parser to parse timeline edits JSON.
+   * val parser = Parser()
+   * val bufferedSource: BufferedSource = File("your-file.json").source().buffer()
+   * val edits: TimelineEdits = parser.parseTimelineEdits(bufferedSource)
+   * ```
    */
   fun parseTimelineEdits(bufferedSource: BufferedSource): TimelineEdits {
     val adapter: JsonAdapter<TimelineEdits> = moshi.adapter(TimelineEdits::class.java)
