@@ -23,7 +23,7 @@ dependencies {
   implementation("com.squareup.okio:okio:3.9.0")
   testImplementation("org.jetbrains.kotlin:kotlin-test")
   // https://github.com/google/truth
-  testImplementation("com.google.truth:truth:1.4.2")
+  testImplementation("com.google.truth:truth:1.4.3")
 }
 
 tasks.test {
