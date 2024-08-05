@@ -1,5 +1,5 @@
 plugins {
-  kotlin("jvm") version "1.9.23"
+  kotlin("jvm") version "1.9.25"
 
   // Publishing plugin
   // https://docs.gradle.org/current/userguide/publishing_maven.html
