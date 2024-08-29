@@ -29,6 +29,14 @@ Sample app for Google Location History Parser project.
 🟢 Got timeline edits: 195,444 items edited.
 ```
 
+## Troubleshooting
+Due to domain model class's nullability rule, you may see `Required value 'metadata' missing at $xyz` error.
+
+![image](https://github.com/user-attachments/assets/5227e892-ccee-4049-8d75-029cff0cd822)
+
+This error is due to the field being missing in the JSON data. 
+To fix this, you can update the model class and build the project again. Feel free to open pull-request with fixes.
+
 ## API Documentation
 
 📖 https://hossain-khan.github.io/kgeo-timeline/
