@@ -64,7 +64,7 @@ data class PlaceAggregates(
    * Metadata associated with the place aggregates.
    */
   @Json(name = "metadata")
-  val metadata: Metadata,
+  val metadata: Metadata?,
 )
 
 @JsonClass(generateAdapter = true)
@@ -78,12 +78,12 @@ data class PlaceAggregateInfoItem(
    * The number of location buckets associated with the place.
    */
   @Json(name = "numBucketsWithLocation")
-  val numBucketsWithLocation: Int,
+  val numBucketsWithLocation: Int?,
   /**
    * The span of the buckets in days.
    */
   @Json(name = "bucketSpanDays")
-  val bucketSpanDays: Int,
+  val bucketSpanDays: Int?,
   /**
    * The geographical point associated with the place.
    */
@@ -129,12 +129,12 @@ data class RawSignal(
    * An additional timestamp associated with the raw signal.
    */
   @Json(name = "additionalTimestamp")
-  val additionalTimestamp: String,
+  val additionalTimestamp: String?,
   /**
    * Metadata about the data object.
    */
   @Json(name = "metadata")
-  val metadata: Metadata,
+  val metadata: Metadata?,
 )
 
 /**
