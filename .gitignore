@@ -46,3 +46,4 @@ timeline/.idea/copilot/
 ### Project Specific Files ###
 **/resources/*.schema.json
 /sample/**/*.json
+/sample/**/*.txt

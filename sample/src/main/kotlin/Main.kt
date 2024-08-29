@@ -23,7 +23,7 @@ import java.io.File
 fun main() {
   println("Sample app for Google Location History Parser project.")
   val resourcesDir = File("sample/src/main/resources")
-  if(!resourcesDir.exists() || !resourcesDir.isDirectory) {
+  if (!resourcesDir.exists() || !resourcesDir.isDirectory) {
     println("Resources directory not found. Please create `sample/src/main/resources` and put your Google Location History JSON files.")
     return
   }
@@ -36,6 +36,10 @@ fun main() {
 private fun parseRecords(resourcesDir: File, parser: Parser) {
 
   val recordsFile = File(resourcesDir, "Records.json")
+  if (recordsFile.exists().not()) {
+    println("ℹ\uFE0F Records file not found.")
+    return
+  }
   val bufferedSource: BufferedSource = recordsFile.source().buffer()
   val records = parser.parseRecords(bufferedSource)
 
@@ -52,17 +56,38 @@ fun parseSemanticRecords(resourcesDir: File, parser: Parser) {
   val dataMap = mutableMapOf<String, List<String>>()
 
   val semanticYears = directory.listFiles()
-  semanticYears?.forEach { yearDirectory ->
+
+  if (semanticYears.isNullOrEmpty()) {
+    println("ℹ\uFE0F No semantic location history data found.")
+    return
+  }
+
+  // Loop through each year directory
+  semanticYears.forEach { yearDirectory ->
     val files = yearDirectory.listFiles()
     files?.forEach {
       // List each files of directory
       val bufferedSource: BufferedSource = it.source().buffer()
       val semanticTimeline = parser.parseSemanticTimeline(bufferedSource)
 
-      if(dataMap.containsKey(yearDirectory.name)) {
-        dataMap[yearDirectory.name] = dataMap[yearDirectory.name]!!.plus("${it.name.removeSurrounding("${yearDirectory.name}_", ".json")}: ${semanticTimeline.timelineObjects.size}")
+      if (dataMap.containsKey(yearDirectory.name)) {
+        dataMap[yearDirectory.name] = dataMap[yearDirectory.name]!!.plus(
+          "${
+            it.name.removeSurrounding(
+              "${yearDirectory.name}_",
+              ".json"
+            )
+          }: ${semanticTimeline.timelineObjects.size}"
+        )
       } else {
-        dataMap[yearDirectory.name] = listOf("${it.name.removeSurrounding("${yearDirectory.name}_", ".json")}: ${semanticTimeline.timelineObjects.size}")
+        dataMap[yearDirectory.name] = listOf(
+          "${
+            it.name.removeSurrounding(
+              "${yearDirectory.name}_",
+              ".json"
+            )
+          }: ${semanticTimeline.timelineObjects.size}"
+        )
       }
     }
   }
