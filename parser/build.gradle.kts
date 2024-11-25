@@ -3,7 +3,7 @@ plugins {
 
   // Ktlint plugin
   // https://github.com/pinterest/ktlint
-  id("org.jlleitschuh.gradle.ktlint") version "12.1.1"
+  id("org.jlleitschuh.gradle.ktlint") version "12.1.2"
 
   // KSP plugin
   // https://github.com/google/ksp/releases
