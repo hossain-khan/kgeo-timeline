@@ -3,11 +3,11 @@
 # KGeoTimeline 📍
 Kotlin library for parsing Google Location History (Timeline) data.
 
-<img width="700" alt="google-takeout-location-history" src="https://github.com/hossain-khan/google-location-history/assets/99822/64b6627e-bb9e-4c61-bc9a-f0885d0659f8">
-
 > [!WARNING]  
 > _Google has discontinued location data export, now the location data is device local._
-> _If you want to parse location data from device, use [kgeo-device-timeline](https://github.com/hossain-khan/kgeo-device-timeline?tab=readme-ov-file) parser._
+> _If you want to parse location data from device, use [kgeo-device-timeline](https://github.com/hossain-khan/kgeo-device-timeline?tab=readme-ov-file) parser._  
+
+<img width="700" alt="google-takeout-location-history" src="https://github.com/hossain-khan/google-location-history/assets/99822/64b6627e-bb9e-4c61-bc9a-f0885d0659f8">
 
 ## Run Sample App
 Open the project in IntelliJ IDEA, and run the `sample/src/main/kotlin/Main.kt` [file](https://github.com/hossain-khan/kgeo-timeline/blob/main/sample/src/main/kotlin/Main.kt).
