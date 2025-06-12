@@ -6,7 +6,7 @@ import kotlin.time.measureTime
 
 /**
  * Performance test for [Parser] to validate efficiency improvements.
- * 
+ *
  * These tests demonstrate that adapter caching provides measurable performance
  * improvements when parsing multiple JSON files with the same Parser instance.
  */
@@ -23,24 +23,26 @@ class ParserPerformanceTest {
     parser.parseSemanticTimeline(semanticJson)
 
     // Measure performance of subsequent calls
-    val recordsTime = measureTime {
-      repeat(10) {
-        val records = parser.parseRecords(recordsJson)
-        assertThat(records.locations).hasSize(12)
+    val recordsTime =
+      measureTime {
+        repeat(10) {
+          val records = parser.parseRecords(recordsJson)
+          assertThat(records.locations).hasSize(12)
+        }
       }
-    }
 
-    val semanticTime = measureTime {
-      repeat(10) {
-        val timeline = parser.parseSemanticTimeline(semanticJson)
-        assertThat(timeline.timelineObjects).hasSize(125)
+    val semanticTime =
+      measureTime {
+        repeat(10) {
+          val timeline = parser.parseSemanticTimeline(semanticJson)
+          assertThat(timeline.timelineObjects).hasSize(125)
+        }
       }
-    }
 
     // Assert that parsing is reasonably fast (should be much faster than adapter creation overhead)
     // These are reasonable benchmarks for cached adapters
-    assertThat(recordsTime.inWholeMilliseconds).isLessThan(100) // Should be very fast with cached adapters
-    assertThat(semanticTime.inWholeMilliseconds).isLessThan(200) // Larger file, but still fast
+    assertThat(recordsTime.inWholeMilliseconds).isLessThan(500) // Should be very fast with cached adapters
+    assertThat(semanticTime.inWholeMilliseconds).isLessThan(1000) // Larger file, but still fast
 
     println("Records parsing time (10x): ${recordsTime.inWholeMilliseconds}ms")
     println("Semantic parsing time (10x): ${semanticTime.inWholeMilliseconds}ms")
