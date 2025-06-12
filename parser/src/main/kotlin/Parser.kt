@@ -16,15 +16,32 @@ import okio.BufferedSource
 /**
  * Parser to parse Google Location Timeline JSON to Kotlin objects.
  *
+ * This class provides efficient parsing of Google Takeout Location History data
+ * by caching JsonAdapter instances to minimize reflection overhead on repeated parsing calls.
+ *
+ * ## Performance Characteristics:
+ * - JsonAdapter instances are cached and reused for optimal performance
+ * - Thread-safe: Multiple threads can safely use the same Parser instance
+ * - Memory efficient: Single Moshi instance with pre-configured adapters
+ *
+ * ## Usage Recommendations:
+ * - Reuse Parser instances when parsing multiple files of the same type
+ * - Use BufferedSource overloads for better I/O performance with large files
+ * - Consider using a single Parser instance across your application
+ *
+ * ## Exception Handling:
+ * - Throws JsonDataException for malformed JSON or missing required fields
+ * - Returns non-null objects; null JSON input will throw NullPointerException
+ *
  * Sample usages for parsing different JSON types:
  * ```kotlin
  * val parser = Parser()
  *
- * // ...
+ * // Efficient for parsing multiple files
  * val bufferedSourceRecords: BufferedSource = recordsFile.source().buffer()
  * val records = parser.parseRecords(bufferedSourceRecords)
  *
- * // ...
+ * // Reuse the same parser instance
  * val bufferedSourceSemantic: BufferedSource = semanticMonthFile.source().buffer()
  * val semanticTimeline = parser.parseSemanticTimeline(bufferedSourceSemantic)
  * ```
@@ -48,8 +65,24 @@ class Parser constructor() {
       )
       .build()
 
+  // Cached JsonAdapter instances to avoid repeated reflection overhead
+  private val recordsAdapter: JsonAdapter<Records> by lazy { moshi.adapter(Records::class.java) }
+  private val settingsAdapter: JsonAdapter<Settings> by lazy { moshi.adapter(Settings::class.java) }
+  private val semanticTimelineAdapter: JsonAdapter<SemanticTimeline> by lazy {
+    moshi.adapter(SemanticTimeline::class.java)
+  }
+  private val timelineEditsAdapter: JsonAdapter<TimelineEdits> by lazy { moshi.adapter(TimelineEdits::class.java) }
+
   /**
    * Parse JSON string to [Records] object.
+   *
+   * This method efficiently parses Google Takeout Records.json data using cached adapters
+   * for optimal performance on repeated calls.
+   *
+   * @param json The JSON string containing Records data
+   * @return Parsed [Records] object
+   * @throws JsonDataException if the JSON is malformed or missing required fields
+   * @throws NullPointerException if json parameter is null
    *
    * ```kotlin
    * // Sample usage of parser to parse records JSON.
@@ -61,12 +94,19 @@ class Parser constructor() {
    * ```
    */
   fun parseRecords(json: String): Records {
-    val adapter: JsonAdapter<Records> = moshi.adapter(Records::class.java)
-    return adapter.fromJson(json)!!
+    return recordsAdapter.fromJson(json)!!
   }
 
   /**
    * Parse JSON buffered source to [Records] object.
+   *
+   * This method efficiently parses Google Takeout Records.json data using cached adapters
+   * and is recommended for large files as it provides better I/O performance.
+   *
+   * @param bufferedSource The BufferedSource containing Records JSON data
+   * @return Parsed [Records] object
+   * @throws JsonDataException if the JSON is malformed or missing required fields
+   * @throws NullPointerException if bufferedSource parameter is null
    *
    * ```kotlin
    * // Sample usage of parser to parse records JSON.
@@ -78,12 +118,19 @@ class Parser constructor() {
    * ```
    */
   fun parseRecords(bufferedSource: BufferedSource): Records {
-    val adapter: JsonAdapter<Records> = moshi.adapter(Records::class.java)
-    return adapter.fromJson(bufferedSource)!!
+    return recordsAdapter.fromJson(bufferedSource)!!
   }
 
   /**
    * Parse JSON string to [Settings] object.
+   *
+   * This method efficiently parses Google Takeout Settings.json data using cached adapters
+   * for optimal performance on repeated calls.
+   *
+   * @param json The JSON string containing Settings data
+   * @return Parsed [Settings] object
+   * @throws JsonDataException if the JSON is malformed or missing required fields
+   * @throws NullPointerException if json parameter is null
    *
    * ```kotlin
    * // Sample usage of parser to parse settings JSON.
@@ -93,12 +140,19 @@ class Parser constructor() {
    * ```
    */
   fun parseSettings(json: String): Settings {
-    val adapter: JsonAdapter<Settings> = moshi.adapter(Settings::class.java)
-    return adapter.fromJson(json)!!
+    return settingsAdapter.fromJson(json)!!
   }
 
   /**
    * Parse JSON buffered source to [Settings] object.
+   *
+   * This method efficiently parses Google Takeout Settings.json data using cached adapters
+   * and is recommended for large files as it provides better I/O performance.
+   *
+   * @param bufferedSource The BufferedSource containing Settings JSON data
+   * @return Parsed [Settings] object
+   * @throws JsonDataException if the JSON is malformed or missing required fields
+   * @throws NullPointerException if bufferedSource parameter is null
    *
    * ```kotlin
    * // Sample usage of parser to parse settings JSON.
@@ -108,12 +162,19 @@ class Parser constructor() {
    * ```
    */
   fun parseSettings(bufferedSource: BufferedSource): Settings {
-    val adapter: JsonAdapter<Settings> = moshi.adapter(Settings::class.java)
-    return adapter.fromJson(bufferedSource)!!
+    return settingsAdapter.fromJson(bufferedSource)!!
   }
 
   /**
    * Parse JSON string to [SemanticTimeline] object.
+   *
+   * This method efficiently parses Google Takeout Semantic Location History JSON data using cached adapters
+   * for optimal performance on repeated calls.
+   *
+   * @param json The JSON string containing SemanticTimeline data
+   * @return Parsed [SemanticTimeline] object
+   * @throws JsonDataException if the JSON is malformed or missing required fields
+   * @throws NullPointerException if json parameter is null
    *
    * ```kotlin
    * // Sample usage of parser to parse semantic timeline JSON.
@@ -125,12 +186,19 @@ class Parser constructor() {
    * ```
    */
   fun parseSemanticTimeline(json: String): SemanticTimeline {
-    val adapter: JsonAdapter<SemanticTimeline> = moshi.adapter(SemanticTimeline::class.java)
-    return adapter.fromJson(json)!!
+    return semanticTimelineAdapter.fromJson(json)!!
   }
 
   /**
    * Parse JSON buffered source to [SemanticTimeline] object.
+   *
+   * This method efficiently parses Google Takeout Semantic Location History JSON data using cached adapters
+   * and is recommended for large files as it provides better I/O performance.
+   *
+   * @param bufferedSource The BufferedSource containing SemanticTimeline JSON data
+   * @return Parsed [SemanticTimeline] object
+   * @throws JsonDataException if the JSON is malformed or missing required fields
+   * @throws NullPointerException if bufferedSource parameter is null
    *
    * ```kotlin
    * // Sample usage of parser to parse semantic timeline JSON.
@@ -142,12 +210,19 @@ class Parser constructor() {
    * ```
    */
   fun parseSemanticTimeline(bufferedSource: BufferedSource): SemanticTimeline {
-    val adapter: JsonAdapter<SemanticTimeline> = moshi.adapter(SemanticTimeline::class.java)
-    return adapter.fromJson(bufferedSource)!!
+    return semanticTimelineAdapter.fromJson(bufferedSource)!!
   }
 
   /**
    * Parse JSON string to [TimelineEdits] object.
+   *
+   * This method efficiently parses Google Takeout Timeline Edits JSON data using cached adapters
+   * for optimal performance on repeated calls.
+   *
+   * @param json The JSON string containing TimelineEdits data
+   * @return Parsed [TimelineEdits] object
+   * @throws JsonDataException if the JSON is malformed or missing required fields
+   * @throws NullPointerException if json parameter is null
    *
    * ```kotlin
    * // Sample usage of parser to parse timeline edits JSON.
@@ -157,12 +232,19 @@ class Parser constructor() {
    * ```
    */
   fun parseTimelineEdits(json: String): TimelineEdits {
-    val adapter: JsonAdapter<TimelineEdits> = moshi.adapter(TimelineEdits::class.java)
-    return adapter.fromJson(json)!!
+    return timelineEditsAdapter.fromJson(json)!!
   }
 
   /**
    * Parse JSON buffered source to [TimelineEdits] object.
+   *
+   * This method efficiently parses Google Takeout Timeline Edits JSON data using cached adapters
+   * and is recommended for large files as it provides better I/O performance.
+   *
+   * @param bufferedSource The BufferedSource containing TimelineEdits JSON data
+   * @return Parsed [TimelineEdits] object
+   * @throws JsonDataException if the JSON is malformed or missing required fields
+   * @throws NullPointerException if bufferedSource parameter is null
    *
    * ```kotlin
    * // Sample usage of parser to parse timeline edits JSON.
@@ -172,7 +254,6 @@ class Parser constructor() {
    * ```
    */
   fun parseTimelineEdits(bufferedSource: BufferedSource): TimelineEdits {
-    val adapter: JsonAdapter<TimelineEdits> = moshi.adapter(TimelineEdits::class.java)
-    return adapter.fromJson(bufferedSource)!!
+    return timelineEditsAdapter.fromJson(bufferedSource)!!
   }
 }
