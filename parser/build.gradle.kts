@@ -7,7 +7,7 @@ plugins {
 
   // KSP plugin
   // https://github.com/google/ksp/releases
-  id("com.google.devtools.ksp").version("2.0.21-1.0.28")
+  id("com.google.devtools.ksp") version "2.1.10-1.0.31"
 }
 
 group = "dev.hossain.timeline"
