@@ -14,9 +14,11 @@ import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 
 /**
- * Tests for [Records] and related classes using copilot.
+ * Unit tests for [Records] and related data classes.
+ * These tests validate data class construction and field assignments.
+ * See [RecordsTest] for JSON parsing integration tests.
  */
-class RecordsTestCopilot {
+class RecordsDataClassTest {
   @Test
   fun `Records should contain list of LocationRecord`() {
     val records = Records(listOf())

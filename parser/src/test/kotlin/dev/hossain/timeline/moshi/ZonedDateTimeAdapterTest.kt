@@ -39,7 +39,7 @@ class ZonedDateTimeAdapterTest {
   }
 
   @Test
-  fun `should return null when deserializing invalid string`() {
+  fun `should throw exception when deserializing invalid date string`() {
     val jsonString = "\"invalid-date-time\""
     val jsonAdapter = moshi.adapter(ZonedDateTime::class.java)
 
