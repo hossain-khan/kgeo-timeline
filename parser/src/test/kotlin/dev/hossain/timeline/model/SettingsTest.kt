@@ -1,13 +1,15 @@
 package dev.hossain.timeline.model
 
 import com.google.common.truth.Truth.assertThat
+import com.squareup.moshi.JsonEncodingException
 import dev.hossain.timeline.Parser
 import dev.hossain.timeline.model.settings.DeviceSpec
 import dev.hossain.timeline.model.settings.Settings
+import org.junit.jupiter.api.assertThrows
 import kotlin.test.Test
 
 /**
- * Test cases for [Settings].
+ * Test cases for [Settings] JSON parsing and validation.
  */
 class SettingsTest {
   private val parser = Parser()
@@ -43,5 +45,35 @@ class SettingsTest {
     assertThat(deviceSettings.androidOsLevel).isEqualTo(34)
     assertThat(deviceSettings.devicePrettyName).isEqualTo("SM-S911W")
     assertThat(deviceSettings.platformType).isEqualTo("ANDROID")
+  }
+
+  @Test
+  fun `given settings json with empty device settings should parse to empty list`() {
+    val json =
+      """
+      {
+          "createdTime": "2013-08-10T18:07:41.251Z",
+          "modifiedTime": "2023-07-06T20:07:56.405Z",
+          "historyEnabled": null,
+          "deviceSettings": [],
+          "retentionWindowDays": null,
+          "hasReportedLocations": true,
+          "hasSetRetention": false
+      }
+      """
+    val settings: Settings = parser.parseSettings(json)
+
+    assertThat(settings.deviceSettings).isEmpty()
+  }
+
+  @Test
+  fun `given invalid settings json should throw exception`() {
+    val json = "invalid json"
+    val error =
+      assertThrows<JsonEncodingException> {
+        parser.parseSettings(json)
+      }
+
+    assertThat(error).isInstanceOf(JsonEncodingException::class.java)
   }
 }
